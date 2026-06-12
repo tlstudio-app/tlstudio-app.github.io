@@ -15,9 +15,21 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
+            rel="preload"
+            as="style"
             href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&display=swap"
-            rel="stylesheet"
         />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&display=swap"
+            media="print"
+            onload="this.media = 'all'"
+        />
+        <noscript
+            ><link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&display=swap"
+        /></noscript>
         <style>
             *,
             *::before,
@@ -309,12 +321,15 @@
 
             <article class="app-card">
                 <div class="app-icon">
-                    <img
-                        src="assets/icon.png"
-                        alt="Night Claw"
-                        width="100"
-                        height="100"
-                    />
+                    <picture>
+                        <source srcset="assets/icon.webp" type="image/webp" />
+                        <img
+                            src="assets/icon.png"
+                            alt="Night Claw"
+                            width="100"
+                            height="100"
+                        />
+                    </picture>
                 </div>
                 <div class="app-content">
                     <h2 class="app-name">Night Claw : Loup Garou</h2>
