@@ -54,13 +54,19 @@
         if (redirected) return;
         redirected = true;
         var ua = navigator.userAgent;
+        var target, platform;
         if (/iPhone|iPad|iPod/i.test(ua)) {
-          window.location.replace("https://apps.apple.com/app/id6760731403");
+          platform = "ios";
+          target = "https://apps.apple.com/app/id6760731403";
         } else if (/Android/i.test(ua)) {
-          window.location.replace("https://play.google.com/store/apps/details?id=com.tlstudio.nightclaw");
+          platform = "android";
+          target = "https://play.google.com/store/apps/details?id=com.tlstudio.nightclaw";
         } else {
-          window.location.replace("https://tlstudio.app");
+          platform = "web";
+          target = "https://tlstudio.app";
         }
+        if (window.posthog) posthog.capture("app_redirect", { platform: platform });
+        window.location.replace(target);
       }
       // fallback si PostHog bloqué (adblock) ou lent
       setTimeout(redirectNow, 1200);
