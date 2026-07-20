@@ -65,8 +65,14 @@
           platform = "web";
           target = "https://tlstudio.app";
         }
-        if (window.posthog) posthog.capture("app_redirect", { platform: platform });
-        window.location.replace(target);
+        if (window.posthog) {
+          posthog.capture("app_redirect", { platform: platform });
+          setTimeout(function () {
+            window.location.replace(target);
+          }, 150);
+        } else {
+          window.location.replace(target);
+        }
       }
       // fallback si PostHog bloqué (adblock) ou lent
       setTimeout(redirectNow, 1200);
