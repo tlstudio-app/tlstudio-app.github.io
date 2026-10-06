@@ -1,0 +1,2527 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+        <title>Werewolf Game: Night Claw | Halloween 2026</title>
+        <meta
+            name="description"
+            content="Discover the Halloween 2026 update of Werewolf Game: Night Claw, featuring the new Necromancer role, a transformed village and a handcrafted experience designed for real nights with friends."
+        />
+        <link rel="canonical" href="https://tlstudio.app/nightclaw/halloween-2026/" />
+        <meta name="theme-color" content="#040404" />
+        <meta name="color-scheme" content="dark" />
+        <link rel="icon" type="image/png" href="/assets/icon.png" />
+        <link rel="apple-touch-icon" href="/assets/icon.png" />
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="T&amp;L Studio" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:url" content="https://tlstudio.app/nightclaw/halloween-2026/" />
+        <meta property="og:title" content="Werewolf Game: Night Claw | Halloween 2026, the dead are back" />
+        <meta
+            property="og:description"
+            content="Discover the Halloween 2026 update of Werewolf Game: Night Claw, featuring the new Necromancer role, a transformed village and a handcrafted experience designed for real nights with friends."
+        />
+        <meta property="og:image" content="https://tlstudio.app/assets/nightclaw/halloween-2026/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta
+            property="og:image:alt"
+            content="The Necromancer, a hooded figure with a horned skull crown, holding a skull before a blood orange moon over a haunted village."
+        />
+
+        <!-- Twitter / X -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Werewolf Game: Night Claw | Halloween 2026, the dead are back" />
+        <meta
+            name="twitter:description"
+            content="Discover the Halloween 2026 update of Werewolf Game: Night Claw, featuring the new Necromancer role, a transformed village and a handcrafted experience designed for real nights with friends."
+        />
+        <meta name="twitter:image" content="https://tlstudio.app/assets/nightclaw/halloween-2026/og-image.jpg" />
+        <meta
+            name="twitter:image:alt"
+            content="The Necromancer, a hooded figure with a horned skull crown, holding a skull before a blood orange moon over a haunted village."
+        />
+
+        <!-- Night Claw typefaces: B612 (UI + body) and Bowlby One SC (role titles) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=B612:ital,wght@0,400;0,700;1,400&family=Bowlby+One+SC&display=swap"
+        />
+
+        <link
+            rel="preload"
+            as="image"
+            type="image/webp"
+            imagesrcset="
+                /assets/nightclaw/halloween-2026/event-main-960.webp   960w,
+                /assets/nightclaw/halloween-2026/event-main-1440.webp 1440w,
+                /assets/nightclaw/halloween-2026/event-main-1920.webp 1920w
+            "
+            imagesizes="(max-width: 760px) 155vh, 100vw"
+            fetchpriority="high"
+        />
+
+        <style>
+            /* ─────────────────────────────────────────────
+               Tokens, mirrored from night-claw-app/src/design-system
+               ───────────────────────────────────────────── */
+            :root {
+                --primary: #feeed3;
+                --light-primary: #fff6e7;
+                --warm-beige: #f6d7b4;
+                --black-shadow: #040404;
+                --pink: #e3205c;
+                --light-pink: #ef7da0;
+                --pink-300: #ff7e9a;
+                --dark-pink: #a71642;
+                --dark-pink-2: #831034;
+                --dark-pink-800: #710022;
+                --dark-pink-900: #470011;
+                --dark-pink-950: #240009;
+                --dark-blue: #1c2d37;
+                --blue-grey: #587a77;
+                --blue-light: #a8d9d4;
+                --orange: #fe8e17;
+
+                /* Sampled from Lolly's Halloween artwork */
+                --moon: #fa5d36;
+                --earth: #351801;
+                --app-night: #1f0d0b;
+                --village-blue: #16242c;
+
+                --font: "B612", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+                --display: "Bowlby One SC", "B612", Impact, sans-serif;
+
+                --card-radius: 42px;
+                --card-border: rgba(255, 246, 231, 0.15);
+                --card-shadow: 0 8px 12px 6px rgba(0, 0, 0, 0.15), 0 4px 4px rgba(0, 0, 0, 0.3);
+
+                --gutter: clamp(20px, 5vw, 72px);
+                --section-y: clamp(72px, 11vw, 160px);
+                --measure: 34rem;
+                --ease: cubic-bezier(0.22, 1, 0.36, 1);
+            }
+
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+            }
+
+            @media (prefers-reduced-motion: no-preference) {
+                html {
+                    scroll-behavior: smooth;
+                }
+            }
+
+            html {
+                -webkit-text-size-adjust: 100%;
+                text-size-adjust: 100%;
+            }
+
+            body {
+                margin: 0;
+                background: var(--black-shadow);
+                color: var(--primary);
+                font-family: var(--font);
+                font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+                line-height: 1.65;
+                letter-spacing: 0.01em;
+                -webkit-font-smoothing: antialiased;
+                overflow-x: hidden;
+            }
+
+            img,
+            video,
+            svg {
+                display: block;
+                max-width: 100%;
+            }
+
+            h1,
+            h2,
+            h3,
+            p,
+            figure,
+            ol {
+                margin: 0;
+            }
+
+            a {
+                color: inherit;
+            }
+
+            :focus-visible {
+                outline: 3px solid var(--pink-300);
+                outline-offset: 4px;
+                border-radius: 6px;
+            }
+
+            .visually-hidden {
+                position: absolute !important;
+                width: 1px;
+                height: 1px;
+                overflow: hidden;
+                clip: rect(0 0 0 0);
+                clip-path: inset(50%);
+                white-space: nowrap;
+            }
+
+            .skip-link {
+                position: absolute;
+                left: 16px;
+                top: -100px;
+                z-index: 100;
+                padding: 10px 18px;
+                background: var(--primary);
+                color: var(--black-shadow);
+                font-weight: 700;
+                border-radius: 20px;
+                text-decoration: none;
+            }
+
+            .skip-link:focus {
+                top: 16px;
+            }
+
+            /* Film grain over everything, like the paper texture in the artwork */
+            body::after {
+                content: "";
+                position: fixed;
+                inset: 0;
+                z-index: 50;
+                pointer-events: none;
+                opacity: 0.07;
+                mix-blend-mode: overlay;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            }
+
+            /* ── Shared type ── */
+            .kicker {
+                display: inline-flex;
+                align-items: center;
+                gap: 12px;
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.3em;
+                text-transform: uppercase;
+                color: var(--pink-300);
+            }
+
+            .kicker::before,
+            .village__screen figcaption::before {
+                content: "";
+                flex: none;
+                width: 11px;
+                height: 11px;
+                background: currentColor;
+                -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='76 202 50 50'%3E%3Cpath d='M77.8 230.3c-1-7.5.2-13.7 3.2-17.9l3.8-5.3c2.4-2.7 4.2-3.2 7.7-4 7.9-1.7 17.6.4 24.3 5.5 3.7 2.8 6.2 5.3 6 7.3-.9 7.3-.3 18.6-15 28.6-7.5 5.1-14.3 9.7-17.7 7.5-6.9-4.6-11.4-12.2-12.3-21.7'/%3E%3C/svg%3E") center / contain no-repeat;
+                mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='76 202 50 50'%3E%3Cpath d='M77.8 230.3c-1-7.5.2-13.7 3.2-17.9l3.8-5.3c2.4-2.7 4.2-3.2 7.7-4 7.9-1.7 17.6.4 24.3 5.5 3.7 2.8 6.2 5.3 6 7.3-.9 7.3-.3 18.6-15 28.6-7.5 5.1-14.3 9.7-17.7 7.5-6.9-4.6-11.4-12.2-12.3-21.7'/%3E%3C/svg%3E") center / contain no-repeat;
+            }
+
+            .display {
+                font-family: var(--display);
+                font-weight: 400;
+                line-height: 0.95;
+                letter-spacing: -0.01em;
+                text-wrap: balance;
+            }
+
+            .h2 {
+                font-size: clamp(2.6rem, 1.6rem + 4.6vw, 5.6rem);
+            }
+
+            .lede {
+                font-weight: 700;
+                font-size: clamp(1.2rem, 1rem + 0.8vw, 1.6rem);
+                line-height: 1.4;
+                text-wrap: balance;
+            }
+
+            .prose {
+                max-width: var(--measure);
+                color: rgba(254, 238, 211, 0.82);
+            }
+
+            .prose p + p {
+                margin-top: 1.1em;
+            }
+
+            .wrap {
+                width: 100%;
+                max-width: 1320px;
+                margin: 0 auto;
+                padding: 0 var(--gutter);
+            }
+
+            section {
+                position: relative;
+            }
+
+            /* Hand-torn section edges */
+            .edge {
+                position: absolute;
+                left: 0;
+                width: 100%;
+                height: clamp(24px, 4vw, 56px);
+                z-index: 3;
+                pointer-events: none;
+            }
+
+            .edge--top {
+                top: 0;
+                transform: translateY(calc(-100% + 6px));
+            }
+
+            .edge path {
+                fill: currentColor;
+            }
+
+            /* Floating blood blobs, the app's signature decoration */
+            .blob {
+                position: absolute;
+                z-index: 0;
+                pointer-events: none;
+                color: var(--pink);
+                animation: drift 18s ease-in-out infinite alternate;
+            }
+
+            .blob {
+                fill: currentColor;
+            }
+
+            @keyframes drift {
+                from {
+                    transform: translate3d(0, 0, 0) rotate(0deg);
+                }
+                to {
+                    transform: translate3d(8px, -18px, 0) rotate(6deg);
+                }
+            }
+
+            /* Reveal on scroll (only hidden when JS is running) */
+            .js .reveal {
+                opacity: 0;
+                transform: translate3d(0, 28px, 0);
+                transition:
+                    opacity 1s var(--ease),
+                    transform 1.2s var(--ease);
+                transition-delay: var(--delay, 0s);
+            }
+
+            .js .reveal.is-in {
+                opacity: 1;
+                transform: none;
+            }
+
+            /* Night Claw button: cream face sitting on a pink base */
+            .nc-button {
+                --face: var(--primary);
+                --base: var(--light-pink);
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                min-height: 56px;
+                padding: 0 30px;
+                border-radius: 28px;
+                background: var(--face);
+                box-shadow: 0 6px 0 var(--base);
+                color: var(--black-shadow);
+                font-weight: 700;
+                font-size: 1.05rem;
+                text-decoration: none;
+                transition:
+                    transform 0.15s ease,
+                    box-shadow 0.15s ease;
+            }
+
+            .nc-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 0 var(--base);
+            }
+
+            .nc-button:active {
+                transform: translateY(4px);
+                box-shadow: 0 2px 0 var(--base);
+            }
+
+            .nc-button svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            /* Screenshot frame, shaped like the role card */
+            .screen {
+                position: relative;
+                border-radius: clamp(28px, 3.4vw, var(--card-radius));
+                overflow: hidden;
+                background: var(--app-night);
+                box-shadow:
+                    var(--card-shadow),
+                    0 40px 80px -20px rgba(0, 0, 0, 0.6);
+            }
+
+            .screen::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: inherit;
+                border: 1px solid var(--card-border);
+                pointer-events: none;
+            }
+
+            .screen img {
+                width: 100%;
+                height: auto;
+            }
+
+            /* ─────────────────────────────────────────────
+               Masthead
+               ───────────────────────────────────────────── */
+            .masthead {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 10;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 16px;
+                padding: max(20px, env(safe-area-inset-top)) var(--gutter) 0;
+                font-size: 0.7rem;
+                font-weight: 700;
+                letter-spacing: 0.3em;
+                text-transform: uppercase;
+            }
+
+            .masthead a {
+                text-decoration: none;
+                color: var(--primary);
+                opacity: 0.85;
+            }
+
+            .masthead a:hover {
+                opacity: 1;
+            }
+
+            .masthead .amp {
+                color: var(--pink);
+            }
+
+            /* ─────────────────────────────────────────────
+               1. Hero
+               ───────────────────────────────────────────── */
+            .hero {
+                position: relative;
+                background: var(--black-shadow);
+                overflow: hidden;
+            }
+
+            .hero__art {
+                position: relative;
+                height: min(100svh, 62vw);
+                min-height: 560px;
+                overflow: hidden;
+            }
+
+            .hero__art img {
+                width: 100%;
+                height: 112%;
+                object-fit: cover;
+                object-position: 62% 30%;
+                will-change: transform;
+            }
+
+            .hero__art::before {
+                /* keeps the masthead legible over the moon */
+                content: "";
+                position: absolute;
+                inset: 0 0 auto 0;
+                z-index: 1;
+                height: 120px;
+                background: linear-gradient(to bottom, rgba(4, 4, 4, 0.45), rgba(4, 4, 4, 0));
+                pointer-events: none;
+            }
+
+            .hero__art::after {
+                /* fade the graveyard into the page */
+                content: "";
+                position: absolute;
+                inset: auto 0 0 0;
+                height: 34%;
+                background: linear-gradient(to bottom, rgba(4, 4, 4, 0), var(--black-shadow) 92%);
+            }
+
+            .hero__copy {
+                position: relative;
+                z-index: 2;
+                margin-top: clamp(-260px, -15vw, -120px);
+                padding-bottom: clamp(64px, 8vw, 120px);
+                display: grid;
+                grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+                gap: clamp(24px, 5vw, 80px);
+                align-items: end;
+            }
+
+            .hero__title .eyebrow {
+                display: block;
+                font-family: var(--font);
+                font-weight: 700;
+                font-size: clamp(0.85rem, 0.7rem + 0.5vw, 1.1rem);
+                letter-spacing: 0.32em;
+                text-transform: uppercase;
+                color: var(--primary);
+                margin-bottom: 18px;
+                text-shadow: 0 1px 12px rgba(4, 4, 4, 0.85), 0 0 2px rgba(4, 4, 4, 0.6);
+            }
+
+            .hero__title .eyebrow b {
+                color: var(--moon);
+            }
+
+            .hero__title .big {
+                display: block;
+                font-family: var(--display);
+                font-weight: 400;
+                font-size: clamp(3.4rem, 1.4rem + 8.4vw, 9.5rem);
+                line-height: 0.88;
+                letter-spacing: -0.015em;
+                color: var(--primary);
+                text-shadow: 0 6px 40px rgba(0, 0, 0, 0.6);
+            }
+
+            .hero__title .line {
+                display: block;
+                white-space: nowrap;
+            }
+
+            .hero__title .big em {
+                font-style: normal;
+                color: var(--pink);
+            }
+
+            .hero__intro {
+                max-width: 26rem;
+                color: rgba(254, 238, 211, 0.85);
+                padding-bottom: 0.6em;
+            }
+
+            .hero__scroll {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                margin-top: 28px;
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.28em;
+                text-transform: uppercase;
+                text-decoration: none;
+                color: rgba(254, 238, 211, 0.6);
+            }
+
+            .hero__scroll:hover {
+                color: var(--primary);
+            }
+
+            .hero__scroll svg {
+                width: 14px;
+                animation: nudge 2.4s ease-in-out infinite;
+            }
+
+            @keyframes nudge {
+                50% {
+                    transform: translateY(5px);
+                }
+            }
+
+            @media (min-width: 761px) {
+                .hero {
+                    height: 100svh;
+                    min-height: 600px;
+                    max-height: 1100px;
+                }
+
+                .hero__art {
+                    position: absolute;
+                    inset: 0;
+                    height: auto;
+                    min-height: 0;
+                }
+
+                .hero__art::after {
+                    height: 55%;
+                    background: linear-gradient(to bottom, rgba(4, 4, 4, 0), rgba(4, 4, 4, 0.75) 55%, var(--black-shadow) 100%);
+                }
+
+                .hero__copy {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    margin: 0 auto;
+                    padding-bottom: clamp(40px, 7svh, 88px);
+                }
+
+                .hero__title .big {
+                    font-size: min(8.4vw, 12.5svh, 9rem);
+                }
+            }
+
+            /* ─────────────────────────────────────────────
+               2. The Necromancer
+               ───────────────────────────────────────────── */
+            .necro {
+                background:
+                    radial-gradient(60% 50% at 85% 20%, rgba(250, 93, 54, 0.12), transparent 70%),
+                    linear-gradient(180deg, var(--black-shadow) 0%, var(--dark-pink-950) 45%, var(--dark-pink-900) 100%);
+                padding: var(--section-y) 0 calc(var(--section-y) * 0.55);
+                overflow-x: clip;
+            }
+
+            .necro__grid {
+                scroll-margin-top: 0;
+                display: grid;
+                grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+                gap: clamp(32px, 6vw, 110px);
+                align-items: center;
+            }
+
+            .necro__art {
+                position: relative;
+                margin-left: calc(var(--gutter) * -1);
+            }
+
+            .necro__art img {
+                width: 100%;
+                height: auto;
+                border-radius: 0 var(--card-radius) var(--card-radius) 0;
+                -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+                mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+            }
+
+            .necro__art figcaption {
+                position: absolute;
+                left: calc(var(--gutter) + 4px);
+                bottom: 9%;
+                max-width: 19rem;
+                font-style: italic;
+                font-size: 0.95rem;
+                line-height: 1.5;
+                color: var(--light-primary);
+            }
+
+            .necro__art figcaption span {
+                display: block;
+                margin-top: 8px;
+                font-style: normal;
+                font-size: 0.68rem;
+                font-weight: 700;
+                letter-spacing: 0.26em;
+                text-transform: uppercase;
+                color: var(--pink-300);
+            }
+
+            .necro__text .h2 {
+                margin: 22px 0 26px;
+            }
+
+            .necro__text .lede {
+                max-width: 30rem;
+                color: var(--warm-beige);
+            }
+
+            .ritual {
+                list-style: none;
+                padding: 0;
+                margin-top: clamp(36px, 5vw, 56px);
+                display: grid;
+                gap: 0;
+                max-width: 34rem;
+            }
+
+            .ritual li {
+                display: grid;
+                grid-template-columns: 5.2rem 1fr;
+                gap: clamp(28px, 3vw, 44px);
+                align-items: start;
+                padding: 22px 0;
+                border-top: 1px dashed rgba(254, 238, 211, 0.22);
+                color: rgba(254, 238, 211, 0.86);
+            }
+
+            .ritual li:last-child {
+                border-bottom: 1px dashed rgba(254, 238, 211, 0.22);
+            }
+
+            .ritual .mark {
+                font-family: var(--display);
+                font-size: 1.15rem;
+                color: var(--moon);
+                line-height: 1;
+            }
+
+            .ritual .mark--big {
+                font-size: 3.4rem;
+                line-height: 0.8;
+                color: var(--pink);
+            }
+
+            .ritual .mark small {
+                display: block;
+                margin-top: 6px;
+                font-family: var(--font);
+                font-size: 0.62rem;
+                font-weight: 700;
+                letter-spacing: 0.24em;
+                text-transform: uppercase;
+                color: var(--pink-300);
+            }
+
+            /* Each word is sized by JS to fill the mark column exactly */
+            .ritual .mark {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.55rem;
+                width: 100%;
+            }
+
+            .ritual .fit {
+                display: block;
+                line-height: 0.82;
+                white-space: nowrap;
+            }
+
+            .ritual .mark small.fit {
+                margin-top: 0;
+                line-height: 1;
+                /* cancel the trailing letter-spacing so the last letter meets the edge */
+                margin-right: -0.24em;
+            }
+
+            /* top-align: lift the text by its leading so cap tops meet the mark's top */
+            .ritual li > span:last-child {
+                margin-top: -0.42em;
+            }
+
+            .ritual strong {
+                color: var(--primary);
+            }
+
+            /* ─────────────────────────────────────────────
+               3. The village
+               ───────────────────────────────────────────── */
+            .village {
+                background: var(--village-blue);
+                color: var(--primary);
+                padding: calc(var(--section-y) * 0.85) 0 var(--section-y);
+                overflow-x: clip;
+            }
+
+            .village .edge {
+                color: var(--village-blue);
+            }
+
+            .village__head {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+                gap: clamp(24px, 5vw, 80px);
+                align-items: end;
+                margin-bottom: clamp(40px, 6vw, 80px);
+            }
+
+            .village__head .h2 {
+                margin-top: 22px;
+            }
+
+            .village__head .h2 span {
+                color: var(--blue-light);
+            }
+
+            .village__head p {
+                color: rgba(254, 238, 211, 0.8);
+                max-width: 26rem;
+            }
+
+            .village__compare {
+                position: relative;
+                z-index: 2;
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+                align-items: end;
+                gap: clamp(16px, 3vw, 48px);
+                max-width: min(820px, 92svh);
+                margin: 0 auto;
+            }
+
+            .village__screen {
+                margin: 0;
+            }
+
+            .village__screen img {
+                width: 100%;
+                height: auto;
+            }
+
+            .village__screen figcaption {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: clamp(14px, 2vw, 22px);
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.28em;
+                text-transform: uppercase;
+                color: rgba(168, 217, 212, 0.7);
+            }
+
+            .village__screen--before img {
+                filter: saturate(0.85) brightness(0.92);
+            }
+
+            .village__screen--after figcaption {
+                color: var(--moon);
+            }
+
+            .village__screen--after img {
+                filter: drop-shadow(0 24px 40px rgba(250, 93, 54, 0.28));
+            }
+
+            .village__arrow {
+                align-self: center;
+                width: clamp(48px, 6vw, 90px);
+                color: var(--pink-300);
+            }
+
+            .village__arrow path {
+                fill: none;
+                stroke: currentColor;
+                stroke-width: 2.4;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+
+            /* ─────────────────────────────────────────────
+               Halloween decor, drawn by Lolly (Figma exports)
+               ───────────────────────────────────────────── */
+            .decor {
+                position: absolute;
+                z-index: 1;
+                height: auto;
+                pointer-events: none;
+                user-select: none;
+            }
+
+            .fog {
+                opacity: 0.55;
+                animation: fog 48s ease-in-out infinite alternate;
+            }
+
+            @keyframes fog {
+                from {
+                    transform: translate3d(-4%, 0, 0);
+                }
+                to {
+                    transform: translate3d(4%, 0, 0);
+                }
+            }
+
+            /* Same box as the torn edge, clipped by the same wave: webs hang right from it */
+            .web-hanger {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: clamp(24px, 4vw, 56px);
+                transform: translateY(calc(-100% + 6px));
+                z-index: 4;
+                pointer-events: none;
+            }
+
+            .web {
+                /* pull the uneven top strands up so they cross the wave everywhere */
+                top: calc(var(--w) * -0.035);
+                width: var(--w);
+                opacity: 0.5;
+                transform-origin: 50% 0;
+                animation: sway 8s ease-in-out infinite alternate;
+            }
+
+            .web--flip {
+                scale: -1 1;
+            }
+
+            @keyframes sway {
+                from {
+                    transform: skewX(-1.5deg) scaleY(0.98);
+                }
+                to {
+                    transform: skewX(1.5deg) scaleY(1.03);
+                }
+            }
+
+            .flyer {
+                animation: hover 6.5s ease-in-out infinite alternate;
+            }
+
+            @keyframes hover {
+                from {
+                    transform: translate3d(0, 0, 0) rotate(-7deg);
+                }
+                to {
+                    transform: translate3d(-14px, -16px, 0) rotate(5deg);
+                }
+            }
+
+            .pumpkin {
+                animation: candle 5s ease-in-out infinite;
+            }
+
+            @keyframes candle {
+                0%,
+                100% {
+                    filter: drop-shadow(0 0 4px rgba(254, 142, 23, 0.15));
+                }
+                30% {
+                    filter: drop-shadow(0 0 16px rgba(254, 142, 23, 0.5));
+                }
+                42% {
+                    filter: drop-shadow(0 0 7px rgba(254, 142, 23, 0.25));
+                }
+                60% {
+                    filter: drop-shadow(0 0 20px rgba(254, 142, 23, 0.55));
+                }
+            }
+
+            /* Graves and pumpkins sink into the next section's torn edge */
+            .graveyard {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 240px;
+                /* clip at the section bottom so sunken bases never show over the next section */
+                overflow: hidden;
+                z-index: 2;
+                pointer-events: none;
+            }
+
+            @media (max-width: 760px) {
+                .decor--hide-sm {
+                    display: none;
+                }
+            }
+
+            /* ─────────────────────────────────────────────
+               4. One phone. One table.
+               ───────────────────────────────────────────── */
+            .table {
+                background:
+                    radial-gradient(70% 60% at 70% 50%, rgba(250, 93, 54, 0.16), transparent 70%),
+                    radial-gradient(40% 40% at 10% 90%, rgba(227, 32, 92, 0.12), transparent 70%),
+                    var(--earth);
+                padding: var(--section-y) 0;
+                overflow-x: clip;
+            }
+
+            .table .edge {
+                color: var(--earth);
+            }
+
+            .table__grid {
+                display: grid;
+                grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+                column-gap: clamp(40px, 6vw, 100px);
+                row-gap: 0;
+                align-items: start;
+            }
+
+            .table__grid > .table__head + div {
+                padding-top: clamp(40px, 5vw, 72px);
+            }
+
+            .table__grid > .table__stage {
+                margin-top: clamp(8px, 2vw, 32px);
+            }
+
+
+            .table__head {
+                grid-column: 1 / -1;
+            }
+
+            .table__title {
+                margin: 22px 0 0;
+                font-size: clamp(2.6rem, 0.9rem + 5.4vw, 6.2rem);
+            }
+
+            @media (min-width: 761px) {
+                .table__title span {
+                    white-space: nowrap;
+                }
+            }
+
+            .table__title span {
+                display: block;
+            }
+
+            .table__title span:nth-child(2) {
+                padding-left: 1.2em;
+            }
+
+            .table__title span:nth-child(3) {
+                padding-left: 0.4em;
+            }
+
+            .table__title span:nth-child(3) {
+                color: var(--moon);
+            }
+
+            .table__stage {
+                position: relative;
+                display: grid;
+                place-items: center;
+                padding: clamp(10px, 3vw, 40px) 0;
+            }
+
+            .table__stage::before {
+                /* the moon, as a warm tabletop light */
+                content: "";
+                position: absolute;
+                width: 112%;
+                aspect-ratio: 1;
+                border-radius: 50%;
+                background: radial-gradient(circle at 45% 40%, #efbb8c 0%, var(--warm-beige) 28%, #f3a26f 62%, var(--moon) 100%);
+                opacity: 0.92;
+                filter: saturate(1.05);
+            }
+
+            .table__stage .screen {
+                position: relative;
+                z-index: 1;
+                width: min(100%, 340px);
+                transform: rotate(-5deg);
+                transition: transform 0.8s var(--ease);
+            }
+
+            .table__stage:hover .screen {
+                transform: rotate(-2deg) translateY(-6px);
+            }
+
+            .table__note {
+                position: absolute;
+                right: -4%;
+                bottom: 4%;
+                z-index: 2;
+                max-width: 11.5rem;
+                padding: 14px 18px;
+                border-radius: 20px;
+                background: var(--black-shadow);
+                color: var(--primary);
+                font-size: 0.82rem;
+                line-height: 1.45;
+                transform: rotate(3deg);
+                box-shadow: var(--card-shadow);
+            }
+
+            .table__note b {
+                color: var(--pink-300);
+            }
+
+            /* ─────────────────────────────────────────────
+               Mora, the narrator (night-claw-app VoiceVisualizer)
+               ───────────────────────────────────────────── */
+            .mora {
+                margin: clamp(32px, 4vw, 48px) 0 0;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 14px 16px;
+            }
+
+            /* Night Claw round button: cream face on a pink base */
+            /* Night Claw round button: one 56px disc, exactly the pill's height,
+               with the app's pink base drawn inside it as a bottom rim */
+            .mora__play {
+                flex: none;
+                display: grid;
+                place-items: center;
+                width: 56px;
+                height: 56px;
+                padding: 0;
+                border: 0;
+                border-radius: 50%;
+                background: var(--primary);
+                box-shadow: inset 0 -5px 0 var(--light-pink);
+                color: var(--black-shadow);
+                cursor: pointer;
+                transition: box-shadow 0.15s ease;
+            }
+
+            .mora__face {
+                display: grid;
+                place-items: center;
+                transform: translateY(-2px);
+                transition: transform 0.15s ease;
+            }
+
+            /* Same motion as .nc-button: hover lifts the face 2px over a thicker base,
+               press sinks it, and the bottom edge never moves */
+            .mora__play:hover {
+                box-shadow: inset 0 -7px 0 var(--light-pink);
+            }
+
+            .mora__play:hover .mora__face {
+                transform: translateY(-4px);
+            }
+
+            .mora__play:active {
+                box-shadow: inset 0 -1px 0 var(--light-pink);
+            }
+
+            .mora__play:active .mora__face {
+                transform: translateY(2px);
+            }
+
+            .mora__icon {
+                grid-area: 1 / 1;
+                width: 30px;
+                height: 30px;
+            }
+
+            .mora__icon--pause,
+            .mora.is-playing .mora__icon--play {
+                display: none;
+            }
+
+            .mora.is-playing .mora__icon--pause {
+                display: block;
+            }
+
+            .mora__pill {
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+                height: 56px;
+                padding: 0 16px 0 8px;
+                border-radius: 32px;
+                background: rgba(0, 0, 0, 0.4);
+                -webkit-backdrop-filter: blur(14px);
+                backdrop-filter: blur(14px);
+            }
+
+            .mora__avatar {
+                flex: none;
+                width: 42px;
+                height: 42px;
+                border-radius: 50%;
+                border: 1px solid var(--black-shadow);
+                object-fit: cover;
+            }
+
+            .mora__bars {
+                display: flex;
+                align-items: center;
+                gap: 3px;
+                height: 44px;
+            }
+
+            .mora__bars i {
+                width: 4px;
+                height: var(--h, 4px);
+                border-radius: 2px;
+                background: var(--light-primary);
+            }
+
+            /* settle back to rest over the app's FADE_OUT_MS (400ms) */
+            .mora:not(.is-playing) .mora__bars i {
+                transition: height 0.4s ease;
+            }
+
+            /* Lolly's spec: opacity then colour fade from the edges inward */
+            .mora__bars i:nth-child(1), .mora__bars i:nth-child(23) { background: #fa005b; opacity: 0.1; }
+            .mora__bars i:nth-child(2), .mora__bars i:nth-child(22) { background: #fa005b; opacity: 0.3; }
+            .mora__bars i:nth-child(3), .mora__bars i:nth-child(21) { background: #ff3676; opacity: 0.6; }
+            .mora__bars i:nth-child(4), .mora__bars i:nth-child(20) { background: var(--pink-300); opacity: 0.9; }
+            .mora__bars i:nth-child(5), .mora__bars i:nth-child(19) { background: #ffaebb; }
+            .mora__bars i:nth-child(6), .mora__bars i:nth-child(18),
+            .mora__bars i:nth-child(7), .mora__bars i:nth-child(17) { background: #ffd8de; }
+            .mora__bars i:nth-child(8), .mora__bars i:nth-child(16) { background: #ffebed; }
+
+            .mora__time {
+                margin-left: 8px;
+                min-width: 2.2em;
+                text-align: right;
+                font-size: 0.75rem;
+                letter-spacing: 0.08em;
+                color: rgba(254, 238, 211, 0.55);
+                font-variant-numeric: tabular-nums;
+            }
+
+            .mora figcaption {
+                flex-basis: 100%;
+                font-size: 0.92rem;
+                color: rgba(254, 238, 211, 0.75);
+            }
+
+            .mora figcaption b {
+                color: var(--primary);
+            }
+
+            /* ─────────────────────────────────────────────
+               5. Your friends become the characters
+               ───────────────────────────────────────────── */
+            .friends {
+                background:
+                    radial-gradient(55% 60% at 22% 50%, rgba(227, 32, 92, 0.22), transparent 70%),
+                    linear-gradient(180deg, var(--dark-pink-950), #12040a);
+                padding: var(--section-y) 0;
+                overflow-x: clip;
+            }
+
+            .friends .edge {
+                color: var(--dark-pink-950);
+            }
+
+            .friends__grid {
+                display: grid;
+                grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+                gap: clamp(40px, 7vw, 120px);
+                align-items: center;
+            }
+
+            .friends__phone {
+                position: relative;
+                justify-self: center;
+                width: min(100%, 380px);
+            }
+
+            .friends__phone {
+                margin-bottom: 72px;
+            }
+
+            .friends__phone .screen {
+                transform: rotate(2.5deg);
+            }
+
+            .annotation {
+                position: absolute;
+                z-index: 2;
+                bottom: -96px;
+                left: 34%;
+                width: 70%;
+                display: flex;
+                align-items: flex-end;
+                gap: 6px;
+                color: var(--primary);
+                font-size: 0.85rem;
+                font-style: italic;
+                line-height: 1.4;
+            }
+
+            .annotation svg {
+                order: -1;
+                flex: none;
+                width: 54px;
+                height: auto;
+                margin-bottom: 4px;
+                color: var(--pink-300);
+            }
+
+            .annotation svg path {
+                fill: none;
+                stroke: currentColor;
+                stroke-width: 2.4;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+
+            .friends__text .h2 {
+                margin: 22px 0 28px;
+            }
+
+            .friends__text .h2 em {
+                font-style: normal;
+                color: var(--pink);
+            }
+
+            .trio {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 32px;
+                padding: 0;
+                list-style: none;
+            }
+
+            .trio li {
+                font-family: var(--display);
+                font-size: clamp(1.1rem, 0.9rem + 0.8vw, 1.5rem);
+                line-height: 1;
+                padding: 12px 20px 10px;
+                border-radius: 20px;
+                background: rgba(254, 238, 211, 0.06);
+                border: 1px solid var(--card-border);
+            }
+
+            .trio li:nth-child(1) {
+                color: var(--pink-300);
+            }
+            .trio li:nth-child(2) {
+                color: var(--moon);
+            }
+            .trio li:nth-child(3) {
+                color: var(--blue-light);
+            }
+
+            /* ─────────────────────────────────────────────
+               6. Every game leaves a memory (cream, like a print)
+               ───────────────────────────────────────────── */
+            .memory {
+                background: var(--primary);
+                color: var(--black-shadow);
+                padding: var(--section-y) 0;
+                overflow-x: clip;
+            }
+
+            .memory .edge {
+                color: var(--primary);
+            }
+
+            .memory .kicker {
+                color: var(--dark-pink);
+            }
+
+            .memory__grid {
+                display: grid;
+                grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+                gap: clamp(40px, 7vw, 120px);
+                align-items: center;
+            }
+
+            .memory__text .h2 {
+                margin: 22px 0 28px;
+                color: var(--black-shadow);
+            }
+
+            .memory__text .h2 em {
+                font-style: normal;
+                color: var(--dark-pink);
+            }
+
+            .memory__text .prose {
+                color: rgba(4, 4, 4, 0.78);
+            }
+
+            .print {
+                position: relative;
+                justify-self: center;
+                width: min(100%, 400px);
+                padding: 14px 14px 64px;
+                background: var(--light-primary);
+                border-radius: 6px;
+                box-shadow:
+                    0 2px 0 rgba(4, 4, 4, 0.06),
+                    0 30px 60px -20px rgba(71, 0, 17, 0.45),
+                    0 14px 24px -12px rgba(4, 4, 4, 0.3);
+                transform: rotate(-3deg);
+                transition: transform 0.8s var(--ease);
+            }
+
+            .print:hover {
+                transform: rotate(-1deg) translateY(-6px);
+            }
+
+            .print img {
+                width: 100%;
+                height: auto;
+                border-radius: 2px;
+            }
+
+            .print figcaption {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 18px;
+                text-align: center;
+                font-family: var(--display);
+                font-size: 1.05rem;
+                color: var(--dark-pink-800);
+            }
+
+            .print::before {
+                /* tape */
+                content: "";
+                position: absolute;
+                top: -16px;
+                left: 50%;
+                width: 120px;
+                height: 34px;
+                transform: translateX(-50%) rotate(4deg);
+                background: rgba(239, 125, 160, 0.55);
+                border-radius: 3px;
+            }
+
+            /* ─────────────────────────────────────────────
+               7. Made by hand
+               ───────────────────────────────────────────── */
+            .hand {
+                background:
+                    radial-gradient(50% 45% at 30% 40%, rgba(88, 122, 119, 0.22), transparent 70%),
+                    var(--black-shadow);
+                padding: var(--section-y) 0;
+                overflow-x: clip;
+            }
+
+            .hand .edge {
+                color: var(--black-shadow);
+            }
+
+            .hand__grid {
+                display: grid;
+                grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+                gap: clamp(40px, 7vw, 120px);
+                align-items: center;
+            }
+
+            .hand__media {
+                position: relative;
+                justify-self: center;
+                width: min(100%, 440px);
+            }
+
+            .hand__media::before {
+                content: "";
+                position: absolute;
+                z-index: 0;
+                width: 120%;
+                aspect-ratio: 1;
+                left: -10%;
+                top: 6%;
+                border-radius: 50%;
+                background: radial-gradient(circle at 40% 40%, var(--warm-beige), #f2a36d 55%, var(--moon) 100%);
+                opacity: 0.9;
+            }
+
+            .hand__frame {
+                position: relative;
+                z-index: 1;
+                aspect-ratio: 9 / 16;
+                border-radius: var(--card-radius);
+                overflow: hidden;
+                background: #1b1b1d url("/assets/nightclaw/halloween-2026/lolly-poster.webp") center / cover no-repeat;
+                box-shadow:
+                    var(--card-shadow),
+                    0 50px 90px -30px rgba(0, 0, 0, 0.8);
+            }
+
+            .hand__frame::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: inherit;
+                border: 1px solid var(--card-border);
+                pointer-events: none;
+            }
+
+            .hand__frame video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .video-toggle {
+                position: absolute;
+                z-index: 2;
+                right: 18px;
+                bottom: 18px;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                min-height: 44px;
+                padding: 0 16px 0 12px;
+                border: 0;
+                border-radius: 22px;
+                background: rgba(4, 4, 4, 0.72);
+                -webkit-backdrop-filter: blur(6px);
+                backdrop-filter: blur(6px);
+                color: var(--primary);
+                font: 700 0.78rem/1 var(--font);
+                letter-spacing: 0.06em;
+                cursor: pointer;
+            }
+
+            .video-toggle[hidden] {
+                display: none;
+            }
+
+            .video-toggle:hover {
+                background: rgba(4, 4, 4, 0.9);
+            }
+
+            .video-toggle svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .video-toggle .i-play {
+                display: none;
+            }
+
+            .video-toggle[aria-pressed="false"] .i-play {
+                display: block;
+            }
+
+            .video-toggle[aria-pressed="false"] .i-pause {
+                display: none;
+            }
+
+            .hand__media figcaption {
+                position: relative;
+                z-index: 1;
+                margin-top: 22px;
+                text-align: center;
+                font-size: 0.85rem;
+                font-style: italic;
+                color: rgba(254, 238, 211, 0.65);
+            }
+
+            .hand__text .h2 {
+                margin: 22px 0 18px;
+                font-size: clamp(3rem, 1.6rem + 6vw, 7rem);
+            }
+
+            .hand__text .lede {
+                color: var(--warm-beige);
+                margin-bottom: clamp(28px, 4vw, 44px);
+            }
+
+            .duo {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+                margin: 28px 0;
+                max-width: var(--measure);
+            }
+
+            .duo p {
+                padding: 18px 20px;
+                border-radius: 20px;
+                border: 1px solid var(--card-border);
+                background: rgba(254, 238, 211, 0.04);
+                font-weight: 700;
+                line-height: 1.35;
+                color: var(--primary);
+            }
+
+            .duo p span {
+                display: block;
+                margin-bottom: 6px;
+                font-family: var(--display);
+                font-weight: 400;
+                font-size: 1.6rem;
+                line-height: 1;
+            }
+
+            .duo p:first-child span {
+                color: var(--pink);
+            }
+
+            .duo p:last-child span {
+                color: var(--blue-light);
+            }
+
+            .signature {
+                margin-top: 34px;
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.26em;
+                text-transform: uppercase;
+                color: rgba(254, 238, 211, 0.55);
+            }
+
+            .signature b {
+                color: var(--primary);
+            }
+
+            /* ─────────────────────────────────────────────
+               8. Closing
+               ───────────────────────────────────────────── */
+            .closing {
+                position: relative;
+                min-height: min(92svh, 860px);
+                display: grid;
+                align-items: center;
+                overflow: hidden;
+                background: var(--black-shadow);
+            }
+
+            .closing__art {
+                position: absolute;
+                inset: 0;
+            }
+
+            .closing__art img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: 18% 70%;
+                filter: saturate(0.9) brightness(0.55);
+            }
+
+            .closing__art::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background:
+                    linear-gradient(to bottom, var(--black-shadow) 0%, rgba(4, 4, 4, 0) 30%, rgba(4, 4, 4, 0) 60%, var(--black-shadow) 100%),
+                    radial-gradient(60% 70% at 50% 50%, rgba(4, 4, 4, 0.55), transparent 80%);
+            }
+
+            .closing__copy {
+                position: relative;
+                z-index: 2;
+                text-align: center;
+                padding: var(--section-y) var(--gutter);
+            }
+
+            .closing__copy .display {
+                font-size: clamp(2.6rem, 1.2rem + 6vw, 6.6rem);
+                text-shadow: 0 6px 40px rgba(0, 0, 0, 0.7);
+            }
+
+            .closing__copy .display span {
+                display: block;
+                color: var(--moon);
+            }
+
+            .closing__copy p {
+                margin: 26px auto 0;
+                max-width: 30rem;
+                font-weight: 700;
+                font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem);
+                line-height: 1.45;
+                color: var(--primary);
+            }
+
+            .closing__links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                gap: 20px 32px;
+                margin-top: clamp(36px, 5vw, 56px);
+            }
+
+            footer {
+                position: relative;
+                z-index: 2;
+                padding: 28px var(--gutter) max(32px, env(safe-area-inset-bottom));
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                gap: 12px 24px;
+                font-size: 0.72rem;
+                letter-spacing: 0.12em;
+                color: rgba(254, 238, 211, 0.5);
+                border-top: 1px solid rgba(227, 32, 92, 0.15);
+            }
+
+            footer a {
+                color: rgba(254, 238, 211, 0.7);
+                text-decoration: none;
+            }
+
+            footer a:hover {
+                color: var(--primary);
+            }
+
+            /* ─────────────────────────────────────────────
+               Tablet
+               ───────────────────────────────────────────── */
+            @media (max-width: 1024px) {
+                .necro__text .h2 {
+                    font-size: clamp(2.4rem, 4.6vw, 3.6rem);
+                }
+
+                .hero__copy {
+                    grid-template-columns: 1fr;
+                    gap: 28px;
+                }
+
+                .annotation {
+                    display: none;
+                }
+
+                .friends__phone {
+                    margin-bottom: 0;
+                }
+
+                .table__note {
+                    right: 0;
+                }
+            }
+
+            /* ─────────────────────────────────────────────
+               Mobile: art first, then headline, then copy
+               ───────────────────────────────────────────── */
+            @media (max-width: 760px) {
+                .hero__art {
+                    height: 76svh;
+                    min-height: 480px;
+                }
+
+                .hero__art img {
+                    object-position: 71% 20%;
+                }
+
+                .hero__title .eyebrow {
+                    letter-spacing: 0.22em;
+                }
+
+                .hero__title .eyebrow .sep {
+                    display: none;
+                }
+
+                .hero__title .eyebrow b {
+                    display: block;
+                    margin-top: 6px;
+                }
+
+                .hero__copy {
+                    margin-top: -150px;
+                    padding-bottom: 56px;
+                }
+
+                .necro__grid,
+                .village__head,
+                .table__grid,
+                .friends__grid,
+                .memory__grid,
+                .hand__grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .necro {
+                    padding-top: 0;
+                }
+
+                .necro__art {
+                    margin: 0 calc(var(--gutter) * -1);
+                }
+
+                .necro__art img {
+                    border-radius: 0;
+                    max-height: 92svh;
+                    object-fit: cover;
+                    object-position: 50% 0;
+                }
+
+                .necro__art figcaption {
+                    left: var(--gutter);
+                    right: var(--gutter);
+                    bottom: 6%;
+                }
+
+                .ritual li {
+                    grid-template-columns: 4.2rem 1fr;
+                    gap: 24px;
+                }
+
+                .ritual .mark--big {
+                    font-size: 2.8rem;
+                }
+
+                .village__compare {
+                    grid-template-columns: 1fr 1fr;
+                    gap: 14px;
+                }
+
+                .village__arrow {
+                    display: none;
+                }
+
+                .village__screen figcaption {
+                    font-size: 0.62rem;
+                    letter-spacing: 0.18em;
+                }
+
+                .village__screen figcaption::before {
+                    width: 8px;
+                    height: 8px;
+                }
+
+                .table__grid {
+                    row-gap: 36px;
+                }
+
+                .table__grid > .table__head + div {
+                    padding-top: 0;
+                }
+
+                .table__head {
+                    order: -2;
+                }
+
+                .table__stage {
+                    order: -1;
+                    margin: 0 auto;
+                    width: 78%;
+                }
+
+                .table__stage .screen {
+                    width: 100%;
+                }
+
+                .table__note {
+                    right: -8%;
+                    bottom: -2%;
+                    max-width: 10rem;
+                    font-size: 0.75rem;
+                }
+
+                .table__title span:nth-child(n) {
+                    padding-left: 0;
+                }
+
+                .friends__phone {
+                    width: 78%;
+                }
+
+                .memory__grid .print {
+                    order: -1;
+                    width: 80%;
+                }
+
+                .hand__media {
+                    width: 86%;
+                }
+
+                .duo {
+                    grid-template-columns: 1fr;
+                }
+
+                .blob--hide-sm {
+                    display: none;
+                }
+            }
+
+            /* ─────────────────────────────────────────────
+               Reduced motion: everything still, nothing hidden
+               ───────────────────────────────────────────── */
+            @media (prefers-reduced-motion: reduce) {
+                *,
+                *::before,
+                *::after {
+                    animation: none !important;
+                    transition: none !important;
+                    scroll-behavior: auto !important;
+                }
+
+                .js .reveal {
+                    opacity: 1;
+                    transform: none;
+                }
+
+                .hero__art img {
+                    height: 100%;
+                }
+            }
+        </style>
+
+        <script>
+            document.documentElement.classList.add("js");
+        </script>
+    </head>
+
+    <body>
+        <a class="skip-link" href="#main">Skip to content</a>
+
+        <!-- Reusable hand-drawn shapes -->
+        <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+            <defs>
+                <path
+                    id="blob-a"
+                    d="M182.9 72c50.3-15.9 91.7-14.2 120.5 2.4l35.8 20.7c3.2 2.5 6.3 4.8 9.1 7.1 12.8 10.7 16 28 19.7 44.2 2.9 12.6 6.5 27.7 9.3 46.9 4.8 33-3.6 66.2-18.8 95.9-29.8 58.4-55.8 105.6-75.5 108.2-49.3 6.6-126.4 32.6-186.9-63.8C65.4 284.6 37.6 239.4 54.2 209c34.2-62.5 73.3-119.5 128.7-137"
+                />
+                <path
+                    id="blob-b"
+                    d="M77.8 230.3c-1-7.5.2-13.7 3.2-17.9l3.8-5.3c2.4-2.7 4.2-3.2 7.7-4 7.9-1.7 17.6.4 24.3 5.5 3.7 2.8 6.2 5.3 6 7.3-.9 7.3-.3 18.6-15 28.6-7.5 5.1-14.3 9.7-17.7 7.5-6.9-4.6-11.4-12.2-12.3-21.7"
+                />
+                <clipPath id="clip-wave-friends" clipPathUnits="objectBoundingBox"><path d="M0 40L0.0000 0.3500C0.0204 0.3639 0.0830 0.3806 0.1222 0.4333C0.1615 0.4861 0.1994 0.6361 0.2354 0.6667C0.2714 0.6972 0.3030 0.6528 0.3382 0.6167C0.3734 0.5806 0.4115 0.4917 0.4465 0.4500C0.4816 0.4083 0.5163 0.3583 0.5486 0.3667C0.5809 0.3750 0.6043 0.4528 0.6403 0.5000C0.6763 0.5472 0.7271 0.6667 0.7646 0.6500C0.8021 0.6333 0.8341 0.4139 0.8653 0.4000C0.8964 0.3861 0.9289 0.5361 0.9514 0.5667C0.9738 0.5972 0.9919 0.5806 1.0000 0.5833L1 40Z" /></clipPath>
+                <clipPath id="clip-wave-hand" clipPathUnits="objectBoundingBox"><path d="M0 40L0.0000 0.3000C0.0128 0.3528 0.0446 0.6250 0.0771 0.6167C0.1096 0.6083 0.1611 0.2556 0.1951 0.2500C0.2292 0.2444 0.2484 0.5833 0.2812 0.5833C0.3141 0.5833 0.3590 0.2972 0.3924 0.2500C0.4257 0.2028 0.4531 0.2833 0.4813 0.3000C0.5094 0.3167 0.5331 0.3139 0.5611 0.3500C0.5891 0.3861 0.6203 0.4722 0.6493 0.5167C0.6784 0.5611 0.7005 0.6250 0.7354 0.6167C0.7704 0.6083 0.8223 0.4861 0.8590 0.4667C0.8957 0.4472 0.9321 0.5028 0.9556 0.5000C0.9791 0.4972 0.9926 0.4583 1.0000 0.4500L1 40Z" /></clipPath>
+            </defs>
+        </svg>
+
+        <header class="masthead">
+            <a href="/">T<span class="amp">&amp;</span>L Studio</a>
+        </header>
+
+        <main id="main">
+            <!-- ═════════ 1. HERO ═════════ -->
+            <section class="hero" aria-labelledby="hero-title">
+                <div class="hero__art">
+                    <img
+                        src="/assets/nightclaw/halloween-2026/event-main-1920.webp"
+                        srcset="
+                            /assets/nightclaw/halloween-2026/event-main-960.webp   960w,
+                            /assets/nightclaw/halloween-2026/event-main-1440.webp 1440w,
+                            /assets/nightclaw/halloween-2026/event-main-1920.webp 1920w
+                        "
+                        sizes="(max-width: 760px) 155vh, 100vw"
+                        width="1920"
+                        height="1080"
+                        alt="Hand-drawn Halloween artwork for Werewolf Game: Night Claw: the Necromancer, a red-haired woman in a dark blue hood crowned with a horned skull, holds a skull against her cheek. Behind her, a huge blood orange moon rises over a black village, a graveyard and a grinning jack-o'-lantern."
+                        fetchpriority="high"
+                        decoding="async"
+                        data-parallax
+                    />
+                </div>
+
+                <div class="wrap hero__copy">
+                    <h1 id="hero-title" class="hero__title reveal">
+                        <span class="eyebrow">Werewolf Game: Night Claw<span class="sep"> · </span><b>Halloween 2026</b></span>
+                        <span class="big"><span class="line">The dead</span> <em class="line">are back.</em></span>
+                    </h1>
+                    <div class="hero__intro reveal" style="--delay: 0.15s">
+                        <p>
+                            For Halloween, we brought the dead back into the game with a brand-new role, a transformed village and a darker
+                            atmosphere designed from the ground up.
+                        </p>
+                        <a class="hero__scroll" href="#necromancer">
+                            Enter the night
+                            <svg viewBox="0 0 14 20" aria-hidden="true" focusable="false">
+                                <path d="M7 1v17M1 12l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═════════ 2. THE NECROMANCER ═════════ -->
+            <section class="necro" aria-labelledby="necro-title">
+                <svg class="blob blob--hide-sm" viewBox="40 60 340 340" style="width: 220px; right: -60px; top: 12%; opacity: 0.35" aria-hidden="true" focusable="false">
+                    <use href="#blob-a" />
+                </svg>
+                <svg class="blob" viewBox="70 195 60 60" style="width: 38px; right: 9%; top: 8%; animation-duration: 12s" aria-hidden="true" focusable="false">
+                    <use href="#blob-b" />
+                </svg>
+
+                <img class="decor fog" src="/assets/nightclaw/halloween-2026/decor/cloud-4.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style="width: min(42vw, 560px); right: -6%; bottom: 2%; opacity: 0.4" />
+
+                <div class="wrap necro__grid" id="necromancer">
+                    <figure class="necro__art reveal">
+                        <img
+                            src="/assets/nightclaw/halloween-2026/event-details-1080.webp"
+                            srcset="
+                                /assets/nightclaw/halloween-2026/event-details-540.webp   540w,
+                                /assets/nightclaw/halloween-2026/event-details-1080.webp 1080w
+                            "
+                            sizes="(max-width: 760px) 100vw, 46vw"
+                            width="1080"
+                            height="1920"
+                            loading="lazy"
+                            decoding="async"
+                            alt="Portrait of the Necromancer: piercing orange eyes, long red hair, a horned skull resting on her head like a crown and a second skull cradled in her hand, framed by a cracked orange moon."
+                        />
+                        <figcaption>
+                            “At night, you wake up alongside all the dead for a limited time to extract crucial information from them.”
+                            <span>The Necromancer’s role card</span>
+                        </figcaption>
+                    </figure>
+
+                    <div class="necro__text">
+                        <p class="kicker reveal">A new role</p>
+                        <h2 id="necro-title" class="display h2 reveal">The Necromancer</h2>
+                        <p class="lede reveal">For the first time, being eliminated doesn’t mean you’re out of the game.</p>
+
+                        <ol class="ritual">
+                            <li class="reveal">
+                                <span class="mark"><span class="fit">Night</span></span>
+                                <span>A player is killed while the village sleeps.</span>
+                            </li>
+                            <li class="reveal">
+                                <span class="mark mark--big"><span class="fit">20</span><small class="fit">seconds</small></span>
+                                <span>Their ghost awakens and can speak <strong>only through gestures</strong>. No words, just hands, faces and whatever they can mime before the time runs out.</span>
+                            </li>
+                            <li class="reveal">
+                                <span class="mark"><span class="fit">Trust</span></span>
+                                <span>The Necromancer knows <strong>every ghost’s true identity</strong>, and decides whom to believe.</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═════════ 3. THE VILLAGE ═════════ -->
+            <section class="village" aria-labelledby="village-title">
+                <svg class="edge edge--top" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                    <path d="M0 60V16C23 19 86 33 140 33C194 33 264 13 325 14C386 15 453 38 504 40C555 42 583 32 630 29C677 26 730 22 787 22C844 22 914 31 974 31C1034 31 1084 23 1144 21C1204 19 1285 18 1334 20C1383 22 1422 33 1440 36V60z" />
+                </svg>
+
+                <img class="decor fog" src="/assets/nightclaw/halloween-2026/decor/cloud-1.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style="width: min(36vw, 520px); right: 2%; top: 6%; animation-duration: 54s" />
+                <img class="decor fog decor--hide-sm" src="/assets/nightclaw/halloween-2026/decor/cloud-2.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style="width: min(46vw, 660px); left: -10%; bottom: 14%; opacity: 0.45; animation-direction: alternate-reverse" />
+
+                <div class="wrap">
+                    <div class="village__head">
+                        <div>
+                            <p class="kicker reveal" style="color: var(--blue-light)">The whole game changes</p>
+                            <h2 id="village-title" class="display h2 reveal">Halloween takes over <span>the village.</span></h2>
+                        </div>
+                        <p class="reveal" style="--delay: 0.1s">
+                            Cobwebs, bats, graves, fog and a darker atmosphere transform the village for Halloween. The same home screen
+                            players know by heart, redrawn for one night of the year.
+                        </p>
+                    </div>
+
+                    <div class="village__compare reveal">
+                        <figure class="village__screen village__screen--before">
+                            <figcaption>All year long</figcaption>
+                            <img
+                                src="/assets/nightclaw/halloween-2026/home-current.webp"
+                                width="428"
+                                height="908"
+                                loading="lazy"
+                                decoding="async"
+                                alt="The usual Night Claw home screen: two snarling werewolves before a pale moon, above a quiet village skyline."
+                            />
+                        </figure>
+                        <svg class="village__arrow" viewBox="0 0 90 40" aria-hidden="true" focusable="false">
+                            <path d="M4 28C22 10 50 6 80 18M80 18l-12-10M80 18l-14 6" />
+                        </svg>
+                        <figure class="village__screen village__screen--after">
+                            <figcaption>Halloween night</figcaption>
+                            <img
+                                src="/assets/nightclaw/halloween-2026/home-halloween.webp"
+                                width="428"
+                                height="908"
+                                loading="lazy"
+                                decoding="async"
+                                alt="The Halloween home screen: the same werewolves draped in cobwebs, bats crossing the moon, and a foggy graveyard with crosses, jack-o'-lanterns and a little ghost along the bottom."
+                            />
+                        </figure>
+                    </div>
+                </div>
+                <div class="graveyard">
+                    <img class="decor " src="/assets/nightclaw/halloween-2026/decor/grab-1.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style="bottom: calc(clamp(24px, 4vw, 56px) * 0.053 - 6px); width: clamp(44px, 4.6vw, 72px); left: 5%" />
+                    <img class="decor pumpkin" src="/assets/nightclaw/halloween-2026/decor/pumpkin-1.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style="bottom: calc(clamp(24px, 4vw, 56px) * 0.237 - 6px); width: clamp(58px, 6vw, 96px); left: calc(5% + clamp(40px, 4.4vw, 70px))" />
+                    <img class="decor decor--hide-sm" src="/assets/nightclaw/halloween-2026/decor/grab-2.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style="bottom: calc(clamp(24px, 4vw, 56px) * 0.454 - 6px); width: clamp(40px, 4vw, 62px); left: 24%" />
+                    <img class="decor pumpkin" src="/assets/nightclaw/halloween-2026/decor/pumpkin-3.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style="bottom: calc(clamp(24px, 4vw, 56px) * 0.444 - 6px); width: clamp(50px, 5vw, 80px); right: 6%; animation-delay: -2.2s" />
+                    <img class="decor " src="/assets/nightclaw/halloween-2026/decor/grab-2.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style="bottom: calc(clamp(24px, 4vw, 56px) * 0.327 - 6px); width: clamp(40px, 4vw, 62px); right: calc(6% + clamp(46px, 4.8vw, 76px))" />
+                    <img class="decor pumpkin decor--hide-sm" src="/assets/nightclaw/halloween-2026/decor/pumpkin-2.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style="bottom: calc(clamp(24px, 4vw, 56px) * 0.560 - 6px); width: clamp(36px, 3.4vw, 54px); right: 30%; animation-delay: -3.6s" />
+                </div>
+            </section>
+
+            <!-- ═════════ 4. ONE PHONE. ONE TABLE. ═════════ -->
+            <section class="table" aria-labelledby="table-title">
+                <svg class="edge edge--top" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                    <path d="M0 60V34C30 35 134 42 183 39C232 36 251 23 297 19C343 15 405 13 461 15C517 17 573 28 632 30C691 32 766 30 815 29C864 28 885 26 926 24C967 22 1011 16 1062 16C1113 16 1168 18 1231 21C1294 24 1405 34 1440 37V60z" />
+                </svg>
+
+                <div class="wrap table__grid">
+                    <div class="table__head">
+                        <p class="kicker reveal">How Night Claw is played</p>
+                        <h2 id="table-title" class="display table__title reveal">
+                            <span>One phone.</span>
+                            <span>One table.</span>
+                            <span>No game master.</span>
+                        </h2>
+                    </div>
+                    <div>
+                        <div class="prose reveal">
+                            <p>
+                                Werewolf Game: Night Claw runs the entire game from a single phone, so nobody has to sit out as the game master.
+                            </p>
+                            <p>
+                                The phone travels around the table. Each player discovers their role in secret, then passes it on. A narrator
+                                voice, music and sound carry the night, and everyone else is free to lie, accuse and laugh across the table.
+                            </p>
+                            <p>It is not a game you play on a screen. It is a game you play with each other.</p>
+                        </div>
+
+                        <!-- Swap src/data-envelope/transcript here once the Necromancer voice line is recorded -->
+                        <figure class="mora reveal" data-src="/assets/nightclaw/halloween-2026/voice/mora-intro.mp3" data-envelope="/assets/nightclaw/halloween-2026/voice/mora-intro.envelope.json">
+                            <button class="mora__play" type="button" aria-pressed="false" aria-describedby="mora-transcript">
+                                <span class="mora__face" aria-hidden="true">
+                                <svg class="mora__icon mora__icon--play" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M9 6.5v11l8.6-5.5z" /></svg>
+                                <svg class="mora__icon mora__icon--pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect fill="currentColor" x="6.5" y="5" width="4" height="14" rx="1" /><rect fill="currentColor" x="13.5" y="5" width="4" height="14" rx="1" /></svg>
+                                </span>
+                                <span class="visually-hidden mora__label">Play Mora, the narrator (24 seconds)</span>
+                            </button>
+                            <span class="mora__pill" aria-hidden="true">
+                                <img class="mora__avatar" src="/assets/nightclaw/halloween-2026/voice/mora.webp" width="84" height="84" alt="" loading="lazy" decoding="async" />
+                                <span class="mora__bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                                <span class="mora__time">0:24</span>
+                            </span>
+                            <figcaption><b>Hear Mora</b>, the voice that runs every game.</figcaption>
+                            <p id="mora-transcript" class="visually-hidden">
+                                Transcript: My name is Mora. Who I am doesn’t matter... Tonight, I’m the Game Master. No rules to learn, no one to referee. I
+                                deal the roles, I lead every night, and I never make mistakes! Come closer. I don’t like repeating myself...
+                            </p>
+                        </figure>
+                    </div>
+
+                    <figure class="table__stage reveal" style="--delay: 0.1s">
+                        <img class="decor flyer" src="/assets/nightclaw/halloween-2026/decor/bat.svg" alt="" aria-hidden="true" loading="lazy" decoding="async" style="width: clamp(52px, 6vw, 84px); left: 2%; top: 36%" />
+                        <img class="decor flyer" src="/assets/nightclaw/halloween-2026/decor/bat-2.svg" alt="" aria-hidden="true" loading="lazy" decoding="async" style="width: clamp(30px, 3vw, 44px); right: 2%; top: calc(50% - 18%); animation-delay: -2s" />
+                        <img class="decor flyer" src="/assets/nightclaw/halloween-2026/decor/bat-1.svg" alt="" aria-hidden="true" loading="lazy" decoding="async" style="width: clamp(44px, 4.6vw, 66px); right: -3%; top: calc(50% + 4%); z-index: 2; animation-delay: -4s" />
+                        <div class="screen">
+                            <img
+                                src="/assets/nightclaw/halloween-2026/role-choice-824.webp"
+                                srcset="
+                                    /assets/nightclaw/halloween-2026/role-choice-412.webp 412w,
+                                    /assets/nightclaw/halloween-2026/role-choice-824.webp 824w
+                                "
+                                sizes="(max-width: 760px) 78vw, 340px"
+                                width="824"
+                                height="1784"
+                                loading="lazy"
+                                decoding="async"
+                                alt="Night Claw role reveal screen reading “Lolly you are”, showing the Necromancer role card and its description, with a “Got it” button to hand the phone to the next player."
+                            />
+                        </div>
+                        <figcaption class="table__note">
+                            <b>Lolly’s turn.</b> She reads her role, taps “Got it” and passes the phone on.
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <!-- ═════════ 5. FRIENDS BECOME CHARACTERS ═════════ -->
+            <section class="friends" aria-labelledby="friends-title">
+                <svg class="edge edge--top" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                    <path d="M0 60V21C29 22 120 23 176 26C232 29 287 38 339 40C391 42 436 39 487 37C538 35 592 30 643 27C694 24 744 22 790 22C836 22 870 27 922 30C974 33 1047 40 1101 39C1155 38 1201 25 1246 24C1291 23 1338 32 1370 34C1402 36 1428 35 1440 35V60z" />
+                </svg>
+                <svg class="blob" viewBox="40 60 340 340" style="width: 280px; left: -80px; bottom: 6%; opacity: 0.25; animation-duration: 22s" aria-hidden="true" focusable="false">
+                    <use href="#blob-a" />
+                </svg>
+
+                <div class="web-hanger" style="clip-path: url(#clip-wave-friends)" aria-hidden="true">
+                    <img class="decor web" src="/assets/nightclaw/halloween-2026/decor/spiderweb.webp" alt="" aria-hidden="true" decoding="async" style="--w: min(52vw, 720px); right: 2%" />
+                </div>
+
+                <div class="wrap friends__grid">
+                    <figure class="friends__phone reveal">
+                        <div class="screen">
+                            <img
+                                src="/assets/nightclaw/halloween-2026/werewolves-action-824.webp"
+                                srcset="
+                                    /assets/nightclaw/halloween-2026/werewolves-action-412.webp 412w,
+                                    /assets/nightclaw/halloween-2026/werewolves-action-824.webp 824w
+                                "
+                                sizes="(max-width: 760px) 78vw, 380px"
+                                width="824"
+                                height="1784"
+                                loading="lazy"
+                                decoding="async"
+                                alt="The werewolves' night screen in Night Claw. A grid of costumed player selfies, Emily with fake scars, Ndja in a witch hat, Jacob as a vampire, Madison, Tyler, Ryan in a rainbow wig, with two players already marked by claw slashes. Jacob is highlighted in pink above the prompt “Choose someone to devour”."
+                            />
+                        </div>
+                        <figcaption class="annotation" aria-hidden="true">
+                            Real selfies, taken when each player joins the game.
+                            <svg viewBox="0 0 54 70">
+                                <path d="M46 66C30 62 14 50 12 30 11 20 13 12 16 4M16 4 8 15M16 4l9 9" />
+                            </svg>
+                        </figcaption>
+                    </figure>
+
+                    <div class="friends__text">
+                        <p class="kicker reveal">Selfies, not avatars</p>
+                        <h2 id="friends-title" class="display h2 reveal">Your friends become <em>the characters.</em></h2>
+                        <div class="prose reveal">
+                            <p>
+                                When players join a game, they take a selfie. From then on, those faces are the village: the ones the werewolves
+                                choose between, the ones accused at dawn, the ones that come back as ghosts.
+                            </p>
+                            <p>On Halloween night, that usually means fake blood, witch hats and a very unconvincing vampire.</p>
+                        </div>
+                        <ul class="trio reveal" aria-label="Every game is">
+                            <li>Personal</li>
+                            <li>Chaotic</li>
+                            <li>Never the same</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═════════ 6. EVERY GAME LEAVES A MEMORY ═════════ -->
+            <section class="memory" aria-labelledby="memory-title">
+                <svg class="edge edge--top" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                    <path d="M0 60V28C26 28 102 26 159 28C216 30 290 36 343 37C396 38 431 37 476 34C521 31 568 20 613 17C658 14 700 12 744 14C788 16 834 29 878 30C922 31 967 19 1009 19C1051 19 1088 26 1130 29C1172 32 1207 37 1259 37C1311 37 1410 30 1440 28V60z" />
+                </svg>
+                <svg class="blob" viewBox="70 195 60 60" style="width: 46px; right: 8%; top: 12%; opacity: 0.8" aria-hidden="true" focusable="false">
+                    <use href="#blob-b" />
+                </svg>
+
+                <img class="decor flyer" src="/assets/nightclaw/halloween-2026/decor/bat.svg" alt="" aria-hidden="true" loading="lazy" decoding="async" style="width: clamp(48px, 5vw, 76px); left: 46%; top: 9%; animation-delay: -1s" />
+                <img class="decor flyer decor--hide-sm" src="/assets/nightclaw/halloween-2026/decor/bat-2.svg" alt="" aria-hidden="true" loading="lazy" decoding="async" style="width: clamp(26px, 2.6vw, 40px); left: 53%; top: 18%; animation-delay: -3.5s" />
+
+                <div class="wrap memory__grid">
+                    <div class="memory__text">
+                        <p class="kicker reveal">After the last vote</p>
+                        <h2 id="memory-title" class="display h2 reveal">Every game leaves <em>a memory.</em></h2>
+                        <div class="prose reveal">
+                            <p>
+                                When the night ends, Night Claw puts together a recap of the game: who won, who lost, every player’s selfie next to
+                                the role they were secretly playing.
+                            </p>
+                            <p>
+                                It is the moment everyone finds out who was lying all along. And it is something to keep, or send to the group chat
+                                once the table is cleared.
+                            </p>
+                        </div>
+                    </div>
+
+                    <figure class="print reveal" style="--delay: 0.1s">
+                        <img
+                            src="/assets/nightclaw/halloween-2026/share-412.webp"
+                            width="412"
+                            height="812"
+                            loading="lazy"
+                            decoding="async"
+                            alt="End of game recap in Night Claw titled “Werewolf Game: Night Claw”. Under “Werewolves won”, a werewolf illustration with the two winning players’ selfies. Under “They lose”, five costumed players, each paired with the illustrated role card they held. The game’s date and time sit at the bottom, like a stamp on a souvenir."
+                        />
+                        <figcaption>Werewolves won.</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <!-- ═════════ 7. MADE BY HAND ═════════ -->
+            <section class="hand" aria-labelledby="hand-title">
+                <svg class="edge edge--top" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                    <path d="M0 60V18C18 21 64 38 111 37C158 36 232 15 281 15C330 15 358 35 405 35C452 35 517 18 565 15C613 12 652 17 693 18C734 19 768 19 808 21C848 23 893 28 935 31C977 34 1009 38 1059 37C1109 36 1184 29 1237 28C1290 27 1342 30 1376 30C1410 30 1429 28 1440 27V60z" />
+                </svg>
+
+                <div class="web-hanger decor--hide-sm" style="clip-path: url(#clip-wave-hand)" aria-hidden="true">
+                    <img class="decor web web--flip decor--hide-sm" src="/assets/nightclaw/halloween-2026/decor/spiderweb.webp" alt="" aria-hidden="true" decoding="async" style="--w: min(44vw, 600px); left: 2%; animation-delay: -4s" />
+                </div>
+
+                <div class="wrap hand__grid">
+                    <figure class="hand__media reveal">
+                        <div class="hand__frame">
+                            <video
+                                id="lolly-video"
+                                muted
+                                loop
+                                playsinline
+                                preload="none"
+                                poster="/assets/nightclaw/halloween-2026/lolly-poster.jpg"
+                                width="720"
+                                height="1280"
+                                aria-label="Lolly at her desk drawing the Necromancer. Her screens show the existing Night Claw role illustrations, then the Necromancer takes shape on the canvas, from flat silhouette to horned skull crown and hooded cloak."
+                                data-autoplay
+                            >
+                                <source data-src="/assets/nightclaw/halloween-2026/lolly-drawing-necromancer-720.mp4" type="video/mp4" />
+                            </video>
+                            <button class="video-toggle" type="button" aria-pressed="true" aria-controls="lolly-video" hidden>
+                                <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" /></svg>
+                                <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 5.5v13l10.5-6.5z" /></svg>
+                                <span class="video-toggle__label">Pause</span>
+                            </button>
+                        </div>
+                        <figcaption>Lolly drawing the Necromancer.</figcaption>
+                    </figure>
+
+                    <div class="hand__text">
+                        <p class="kicker reveal">Behind the night</p>
+                        <h2 id="hand-title" class="display h2 reveal">Made by hand.</h2>
+                        <p class="lede reveal">Every character starts with a drawing.</p>
+
+                        <div class="prose reveal">
+                            <p>Werewolf Game: Night Claw is an indie game made by a couple in Toulouse, France.</p>
+                        </div>
+
+                        <div class="duo reveal">
+                            <p><span>She</span>is an illustrator-designer.</p>
+                            <p><span>He</span>is a developer.</p>
+                        </div>
+
+                        <div class="prose reveal">
+                            <p>We built Night Claw in our spare time after countless nights playing Werewolf with friends.</p>
+                            <p>Every character and illustration is created in-house.</p>
+                            <p>
+                                The Halloween update continues that approach, from the Necromancer artwork to the redesigned village and the
+                                smallest details of the interface.
+                            </p>
+                        </div>
+
+                        <p class="signature reveal"><b>Lolly &amp; Tito</b> · T&amp;L Studio</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═════════ 8. CLOSING ═════════ -->
+            <section class="closing" aria-labelledby="closing-title">
+                <div class="closing__art" aria-hidden="true">
+                    <img
+                        src="/assets/nightclaw/halloween-2026/event-main-1440.webp"
+                        srcset="
+                            /assets/nightclaw/halloween-2026/event-main-960.webp   960w,
+                            /assets/nightclaw/halloween-2026/event-main-1440.webp 1440w,
+                            /assets/nightclaw/halloween-2026/event-main-1920.webp 1920w
+                        "
+                        sizes="(max-width: 760px) 200vw, 100vw"
+                        width="1920"
+                        height="1080"
+                        loading="lazy"
+                        decoding="async"
+                        alt=""
+                    />
+                </div>
+                <svg class="blob" viewBox="70 195 60 60" style="width: 54px; left: 14%; top: 22%" aria-hidden="true" focusable="false"><use href="#blob-b" /></svg>
+                <svg class="blob blob--hide-sm" viewBox="40 60 340 340" style="width: 120px; right: 10%; bottom: 18%; opacity: 0.6; animation-duration: 24s" aria-hidden="true" focusable="false"><use href="#blob-a" /></svg>
+
+                <img class="decor fog" src="/assets/nightclaw/halloween-2026/decor/cloud-3.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style="width: min(50vw, 700px); left: -12%; bottom: 2%; opacity: 0.42" />
+                <img class="decor fog decor--hide-sm" src="/assets/nightclaw/halloween-2026/decor/cloud-1.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style="width: min(40vw, 560px); right: -6%; bottom: 12%; opacity: 0.4; animation-direction: alternate-reverse" />
+
+                <div class="closing__copy">
+                    <h2 id="closing-title" class="display reveal">Halloween is <span>only one night.</span></h2>
+                    <p class="reveal" style="--delay: 0.1s">We wanted Night Claw to make it unforgettable.</p>
+                    <div class="closing__links reveal" style="--delay: 0.2s">
+                        <a class="nc-button" href="https://apps.apple.com/app/id6760731403" aria-label="Werewolf Game: Night Claw on the App Store">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path
+                                    fill="currentColor"
+                                    d="M16.37 12.62c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.77-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74s1.78.74 3 .72c1.24-.02 2.02-1.12 2.78-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.69M14.1 5.87c.63-.77 1.06-1.83.94-2.89-.91.04-2.01.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.05-.52 2.69-1.28"
+                                />
+                            </svg>
+                            View on the App Store
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <span>© 2026 T&amp;L Studio</span>
+            <span><a href="mailto:contact@tlstudio.app">contact@tlstudio.app</a> · <a href="/nightclaw/privacy/">Privacy</a></span>
+        </footer>
+
+        <script>
+            (function () {
+                var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+                // Gentle reveals: a rAF-throttled check also catches elements skipped by a fast scroll
+                var pending = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+                var reveal = function () {
+                    var limit = window.innerHeight * 0.92;
+                    pending = pending.filter(function (el) {
+                        if (reduce || el.getBoundingClientRect().top < limit) {
+                            el.classList.add("is-in");
+                            return false;
+                        }
+                        return true;
+                    });
+                };
+                var queued = false;
+                window.addEventListener(
+                    "scroll",
+                    function () {
+                        if (!queued && pending.length) {
+                            queued = true;
+                            requestAnimationFrame(function () {
+                                queued = false;
+                                reveal();
+                            });
+                        }
+                    },
+                    { passive: true }
+                );
+                window.addEventListener("resize", reveal);
+                reveal();
+
+                // Ritual marks: scale each word to the exact width of its column
+                var fits = document.querySelectorAll(".ritual .fit");
+                var fitMarks = function () {
+                    fits.forEach(function (el) {
+                        el.style.fontSize = "100px";
+                        // ignore trailing letter-spacing after the last glyph
+                        var w = el.getBoundingClientRect().width - (parseFloat(getComputedStyle(el).letterSpacing) || 0);
+                        var target = el.parentElement.clientWidth;
+                        if (w && target) el.style.fontSize = ((100 * target) / w).toFixed(2) + "px";
+                    });
+                };
+                fitMarks();
+                if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitMarks);
+                window.addEventListener("resize", fitMarks);
+
+                // Mora: click-to-play voice, bars driven by the app's precomputed envelope
+                var mora = document.querySelector(".mora");
+                if (mora) {
+                    var pill = mora.querySelector(".mora__play");
+                    var bars = mora.querySelectorAll(".mora__bars i");
+                    var timeEl = mora.querySelector(".mora__time");
+                    var moraLabel = mora.querySelector(".mora__label");
+                    var center = (bars.length - 1) / 2;
+                    var heights = Array.prototype.map.call(bars, function () {
+                        return 4;
+                    });
+                    var audio = null;
+                    var envelope = null;
+                    var timer = 0;
+                    // As in the app: every bar starts at MIN_BAR_HEIGHT (4px), only the voice moves them
+                    var rest = function () {
+                        bars.forEach(function (b, i) {
+                            heights[i] = 4;
+                            b.style.setProperty("--h", "4px");
+                        });
+                    };
+                    var fmt = function (sec) {
+                        sec = Math.max(0, Math.round(sec));
+                        return Math.floor(sec / 60) + ":" + String(sec % 60).padStart(2, "0");
+                    };
+                    // Same cadence as the app: useSmoothVoiceProgress ticks every windowMs (50ms)
+                    // and SMOOTHING 0.45 applies per tick, so the rate defines the feel
+                    var step = function () {
+                        if (!audio || !envelope) return;
+                        var w = Math.min(envelope.samples.length - 1, Math.floor((audio.currentTime * 1000) / envelope.windowMs));
+                        var bands = envelope.samples[w] || [];
+                        for (var d = 0; d < envelope.bandCount; d++) {
+                            // as in the app: smooth once from the left bar, mirror the value to the right
+                            var target = 4 + (bands[d] || 0) * 40;
+                            var h = heights[center - d] + (target - heights[center - d]) * 0.45;
+                            heights[center - d] = heights[center + d] = h;
+                            bars[center - d].style.setProperty("--h", h.toFixed(1) + "px");
+                            if (d) bars[center + d].style.setProperty("--h", h.toFixed(1) + "px");
+                        }
+                        timeEl.textContent = fmt(audio.duration - audio.currentTime);
+                    };
+                    var setPlaying = function (on) {
+                        mora.classList.toggle("is-playing", on);
+                        pill.setAttribute("aria-pressed", on ? "true" : "false");
+                        moraLabel.textContent = on ? "Pause Mora, the narrator" : "Play Mora, the narrator (24 seconds)";
+                    };
+                    pill.addEventListener("click", function () {
+                        if (audio && !audio.paused) {
+                            audio.pause();
+                            return;
+                        }
+                        var start = function () {
+                            audio.play().catch(function () {
+                                setPlaying(false);
+                            });
+                        };
+                        if (audio) return start();
+                        audio = new Audio(mora.dataset.src);
+                        audio.preload = "auto";
+                        audio.addEventListener("play", function () {
+                            setPlaying(true);
+                            clearInterval(timer);
+                            timer = setInterval(step, envelope ? envelope.windowMs : 50);
+                        });
+                        audio.addEventListener("pause", function () {
+                            setPlaying(false);
+                            clearInterval(timer);
+                        });
+                        audio.addEventListener("ended", function () {
+                            audio.currentTime = 0;
+                            timeEl.textContent = fmt(audio.duration);
+                            rest();
+                        });
+                        fetch(mora.dataset.envelope)
+                            .then(function (r) {
+                                return r.json();
+                            })
+                            .then(function (env) {
+                                envelope = env;
+                                start();
+                            })
+                            .catch(start);
+                    });
+                }
+
+                // Very light parallax on the hero artwork
+                var art = document.querySelector("[data-parallax]");
+                if (art && !reduce) {
+                    var ticking = false;
+                    var update = function () {
+                        var y = Math.min(window.scrollY, window.innerHeight);
+                        art.style.transform = "translate3d(0," + (y * -0.12).toFixed(1) + "px,0)";
+                        ticking = false;
+                    };
+                    window.addEventListener(
+                        "scroll",
+                        function () {
+                            if (!ticking) {
+                                ticking = true;
+                                requestAnimationFrame(update);
+                            }
+                        },
+                        { passive: true }
+                    );
+                }
+
+                // Lolly video: load only when near the viewport, autoplay unless reduced motion
+                var video = document.getElementById("lolly-video");
+                var toggle = document.querySelector(".video-toggle");
+                var label = toggle.querySelector(".video-toggle__label");
+                var userPaused = reduce;
+
+                var setState = function (playing) {
+                    toggle.setAttribute("aria-pressed", playing ? "true" : "false");
+                    label.textContent = playing ? "Pause" : "Play";
+                };
+
+                var load = function () {
+                    if (video.dataset.loaded) return;
+                    video.dataset.loaded = "1";
+                    video.querySelectorAll("source[data-src]").forEach(function (s) {
+                        s.src = s.dataset.src;
+                    });
+                    video.load();
+                    toggle.hidden = false;
+                };
+
+                var play = function () {
+                    var p = video.play();
+                    if (p && p.catch) {
+                        p.then(function () {
+                            setState(true);
+                        }).catch(function () {
+                            setState(false);
+                        });
+                    }
+                };
+
+                toggle.addEventListener("click", function () {
+                    load();
+                    if (video.paused) {
+                        userPaused = false;
+                        play();
+                    } else {
+                        userPaused = true;
+                        video.pause();
+                        setState(false);
+                    }
+                });
+
+                setState(!reduce);
+
+                if ("IntersectionObserver" in window) {
+                    new IntersectionObserver(
+                        function (entries) {
+                            entries.forEach(function (e) {
+                                if (e.isIntersecting) {
+                                    load();
+                                    if (!userPaused) play();
+                                } else if (!video.paused) {
+                                    video.pause();
+                                }
+                            });
+                        },
+                        { rootMargin: "300px 0px" }
+                    ).observe(video);
+                } else {
+                    load();
+                    if (!userPaused) play();
+                }
+            })();
+        </script>
+    </body>
+</html>
