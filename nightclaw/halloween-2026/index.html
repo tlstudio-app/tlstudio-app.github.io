@@ -1061,32 +1061,29 @@
                 box-shadow: inset 0 -5px 0 var(--light-pink);
                 color: var(--black-shadow);
                 cursor: pointer;
-                transition: box-shadow 0.15s ease;
+                transition:
+                    transform 0.15s ease,
+                    box-shadow 0.15s ease;
             }
 
             .mora__face {
                 display: grid;
                 place-items: center;
                 transform: translateY(-2px);
-                transition: transform 0.15s ease;
             }
 
-            /* Same motion as .nc-button: hover lifts the face 2px over a thicker base,
-               press sinks it, and the bottom edge never moves */
+            /* Same motion as .nc-button: hover lifts the disc 2px and the base grows below it,
+               press sinks it into a thin base. Only the resting state matches the pill's 56px. */
             .mora__play:hover {
-                box-shadow: inset 0 -7px 0 var(--light-pink);
-            }
-
-            .mora__play:hover .mora__face {
-                transform: translateY(-4px);
+                transform: translateY(-2px);
+                box-shadow:
+                    inset 0 -5px 0 var(--light-pink),
+                    0 2px 0 var(--light-pink);
             }
 
             .mora__play:active {
-                box-shadow: inset 0 -1px 0 var(--light-pink);
-            }
-
-            .mora__play:active .mora__face {
-                transform: translateY(2px);
+                transform: translateY(3px);
+                box-shadow: inset 0 -2px 0 var(--light-pink);
             }
 
             .mora__icon {
