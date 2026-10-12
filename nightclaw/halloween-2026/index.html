@@ -833,16 +833,32 @@
                 }
             }
 
-            /* Same box as the torn edge, clipped by the same wave: webs hang right from it */
+            /* Starts at the torn edge's box and is masked by the same wave so webs hang right from it.
+               A mask, not clip-path: url(), because iOS Safari crops that clip to the 24px box and cuts the web. */
             .web-hanger {
+                --edge-h: clamp(24px, 4vw, 56px);
                 position: absolute;
                 left: 0;
                 top: 0;
                 width: 100%;
-                height: clamp(24px, 4vw, 56px);
-                transform: translateY(calc(-100% + 6px));
+                height: calc(var(--edge-h) + 50vw);
+                transform: translateY(calc(var(--edge-h) * -1 + 6px));
                 z-index: 4;
                 pointer-events: none;
+                -webkit-mask:
+                    var(--wave) top / 100% var(--edge-h) no-repeat,
+                    linear-gradient(#000 0 0) bottom / 100% calc(100% - var(--edge-h) + 1px) no-repeat;
+                mask:
+                    var(--wave) top / 100% var(--edge-h) no-repeat,
+                    linear-gradient(#000 0 0) bottom / 100% calc(100% - var(--edge-h) + 1px) no-repeat;
+            }
+
+            .web-hanger--friends {
+                --wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio='none'%3E%3Cpath d='M0 40L0.0000 0.3500C0.0204 0.3639 0.0830 0.3806 0.1222 0.4333C0.1615 0.4861 0.1994 0.6361 0.2354 0.6667C0.2714 0.6972 0.3030 0.6528 0.3382 0.6167C0.3734 0.5806 0.4115 0.4917 0.4465 0.4500C0.4816 0.4083 0.5163 0.3583 0.5486 0.3667C0.5809 0.3750 0.6043 0.4528 0.6403 0.5000C0.6763 0.5472 0.7271 0.6667 0.7646 0.6500C0.8021 0.6333 0.8341 0.4139 0.8653 0.4000C0.8964 0.3861 0.9289 0.5361 0.9514 0.5667C0.9738 0.5972 0.9919 0.5806 1.0000 0.5833L1 40Z'/%3E%3C/svg%3E");
+            }
+
+            .web-hanger--hand {
+                --wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio='none'%3E%3Cpath d='M0 40L0.0000 0.3000C0.0128 0.3528 0.0446 0.6250 0.0771 0.6167C0.1096 0.6083 0.1611 0.2556 0.1951 0.2500C0.2292 0.2444 0.2484 0.5833 0.2812 0.5833C0.3141 0.5833 0.3590 0.2972 0.3924 0.2500C0.4257 0.2028 0.4531 0.2833 0.4813 0.3000C0.5094 0.3167 0.5331 0.3139 0.5611 0.3500C0.5891 0.3861 0.6203 0.4722 0.6493 0.5167C0.6784 0.5611 0.7005 0.6250 0.7354 0.6167C0.7704 0.6083 0.8223 0.4861 0.8590 0.4667C0.8957 0.4472 0.9321 0.5028 0.9556 0.5000C0.9791 0.4972 0.9926 0.4583 1.0000 0.4500L1 40Z'/%3E%3C/svg%3E");
             }
 
             .web {
@@ -916,6 +932,11 @@
             @media (max-width: 760px) {
                 .decor--hide-sm {
                     display: none;
+                }
+
+                /* keep webs in the gap above the phone and video mockups instead of sliding under them */
+                .web {
+                    --w: 32vw !important;
                 }
             }
 
@@ -1851,8 +1872,6 @@
                     id="blob-b"
                     d="M77.8 230.3c-1-7.5.2-13.7 3.2-17.9l3.8-5.3c2.4-2.7 4.2-3.2 7.7-4 7.9-1.7 17.6.4 24.3 5.5 3.7 2.8 6.2 5.3 6 7.3-.9 7.3-.3 18.6-15 28.6-7.5 5.1-14.3 9.7-17.7 7.5-6.9-4.6-11.4-12.2-12.3-21.7"
                 />
-                <clipPath id="clip-wave-friends" clipPathUnits="objectBoundingBox"><path d="M0 40L0.0000 0.3500C0.0204 0.3639 0.0830 0.3806 0.1222 0.4333C0.1615 0.4861 0.1994 0.6361 0.2354 0.6667C0.2714 0.6972 0.3030 0.6528 0.3382 0.6167C0.3734 0.5806 0.4115 0.4917 0.4465 0.4500C0.4816 0.4083 0.5163 0.3583 0.5486 0.3667C0.5809 0.3750 0.6043 0.4528 0.6403 0.5000C0.6763 0.5472 0.7271 0.6667 0.7646 0.6500C0.8021 0.6333 0.8341 0.4139 0.8653 0.4000C0.8964 0.3861 0.9289 0.5361 0.9514 0.5667C0.9738 0.5972 0.9919 0.5806 1.0000 0.5833L1 40Z" /></clipPath>
-                <clipPath id="clip-wave-hand" clipPathUnits="objectBoundingBox"><path d="M0 40L0.0000 0.3000C0.0128 0.3528 0.0446 0.6250 0.0771 0.6167C0.1096 0.6083 0.1611 0.2556 0.1951 0.2500C0.2292 0.2444 0.2484 0.5833 0.2812 0.5833C0.3141 0.5833 0.3590 0.2972 0.3924 0.2500C0.4257 0.2028 0.4531 0.2833 0.4813 0.3000C0.5094 0.3167 0.5331 0.3139 0.5611 0.3500C0.5891 0.3861 0.6203 0.4722 0.6493 0.5167C0.6784 0.5611 0.7005 0.6250 0.7354 0.6167C0.7704 0.6083 0.8223 0.4861 0.8590 0.4667C0.8957 0.4472 0.9321 0.5028 0.9556 0.5000C0.9791 0.4972 0.9926 0.4583 1.0000 0.4500L1 40Z" /></clipPath>
             </defs>
         </svg>
 
@@ -2099,7 +2118,7 @@
                     <use href="#blob-a" />
                 </svg>
 
-                <div class="web-hanger" style="clip-path: url(#clip-wave-friends)" aria-hidden="true">
+                <div class="web-hanger web-hanger--friends" aria-hidden="true">
                     <img class="decor web" src="/assets/nightclaw/halloween-2026/decor/spiderweb.webp" alt="" aria-hidden="true" decoding="async" style="--w: min(52vw, 720px); right: 2%" />
                 </div>
 
@@ -2195,8 +2214,8 @@
                     <path d="M0 60V18C18 21 64 38 111 37C158 36 232 15 281 15C330 15 358 35 405 35C452 35 517 18 565 15C613 12 652 17 693 18C734 19 768 19 808 21C848 23 893 28 935 31C977 34 1009 38 1059 37C1109 36 1184 29 1237 28C1290 27 1342 30 1376 30C1410 30 1429 28 1440 27V60z" />
                 </svg>
 
-                <div class="web-hanger decor--hide-sm" style="clip-path: url(#clip-wave-hand)" aria-hidden="true">
-                    <img class="decor web web--flip decor--hide-sm" src="/assets/nightclaw/halloween-2026/decor/spiderweb.webp" alt="" aria-hidden="true" decoding="async" style="--w: min(44vw, 600px); left: 2%; animation-delay: -4s" />
+                <div class="web-hanger web-hanger--hand" aria-hidden="true">
+                    <img class="decor web web--flip" src="/assets/nightclaw/halloween-2026/decor/spiderweb.webp" alt="" aria-hidden="true" decoding="async" style="--w: min(44vw, 600px); left: 2%; animation-delay: -4s" />
                 </div>
 
                 <div class="wrap hand__grid">
