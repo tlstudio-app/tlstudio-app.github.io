@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
+            id="meta-description"
             name="description"
             content="T&amp;L Studio — We craft mobile experiences. Studio indépendant de développement d'applications mobiles."
         />
@@ -73,8 +74,54 @@
 
             /* ── Header ── */
             header {
+                position: relative;
                 padding: 52px 24px 0;
                 text-align: center;
+            }
+
+            /* ── Language switch ── */
+            .lang-switch {
+                position: absolute;
+                top: 18px;
+                right: 20px;
+                display: flex;
+                gap: 8px;
+            }
+
+            .lang-switch button {
+                display: flex;
+                width: 26px;
+                height: 18px;
+                padding: 0;
+                border: 0;
+                border-radius: 3px;
+                overflow: hidden;
+                background: none;
+                cursor: pointer;
+                opacity: 0.4;
+                transition:
+                    opacity 0.2s ease,
+                    box-shadow 0.2s ease;
+            }
+
+            .lang-switch button:hover {
+                opacity: 0.8;
+            }
+
+            .lang-switch button[aria-pressed="true"] {
+                opacity: 1;
+                box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--pink);
+            }
+
+            .lang-switch button:focus-visible {
+                outline: 2px solid var(--cream);
+                outline-offset: 3px;
+            }
+
+            .lang-switch svg {
+                width: 100%;
+                height: 100%;
+                display: block;
             }
 
             .studio-name {
@@ -290,12 +337,17 @@
             /* ── Responsive ── */
             @media (max-width: 540px) {
                 header {
-                    padding-top: 32px;
+                    padding-top: 44px;
+                }
+
+                .lang-switch {
+                    top: 12px;
+                    right: 16px;
                 }
 
                 .hero {
                     padding-top: 12px;
-                    padding-bottom: 32px;
+                    padding-bottom: 20px;
                 }
 
                 main {
@@ -332,6 +384,33 @@
     </head>
     <body>
         <header>
+            <nav class="lang-switch" aria-label="Langue / Language / Idioma">
+                <button type="button" data-lang="fr" lang="fr" title="Français" aria-label="Français">
+                    <svg viewBox="0 0 3 2" aria-hidden="true">
+                        <rect width="1" height="2" fill="#002654" />
+                        <rect x="1" width="1" height="2" fill="#fff" />
+                        <rect x="2" width="1" height="2" fill="#ce1126" />
+                    </svg>
+                </button>
+                <button type="button" data-lang="en" lang="en" title="English" aria-label="English">
+                    <svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                        <clipPath id="uk-t">
+                            <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z" />
+                        </clipPath>
+                        <rect width="60" height="30" fill="#012169" />
+                        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6" />
+                        <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#uk-t)" stroke="#c8102e" stroke-width="4" />
+                        <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10" />
+                        <path d="M30,0 v30 M0,15 h60" stroke="#c8102e" stroke-width="6" />
+                    </svg>
+                </button>
+                <button type="button" data-lang="es" lang="es" title="Español" aria-label="Español">
+                    <svg viewBox="0 0 3 2" aria-hidden="true">
+                        <rect width="3" height="2" fill="#aa151b" />
+                        <rect y="0.5" width="3" height="1" fill="#f1bf00" />
+                    </svg>
+                </button>
+            </nav>
             <p class="studio-name">T<span class="amp">&amp;</span>L Studio</p>
         </header>
 
@@ -340,7 +419,7 @@
         </section>
 
         <main>
-            <p class="section-label">Our apps</p>
+            <p class="section-label" data-i18n="sectionLabel">Nos applications</p>
 
             <article class="app-card">
                 <div class="app-icon">
@@ -355,8 +434,8 @@
                     </picture>
                 </div>
                 <div class="app-content">
-                    <h2 class="app-name">Loup Garou : Night Claw</h2>
-                    <p class="app-desc">
+                    <h2 class="app-name" data-i18n="appName">Loup Garou : Night Claw</h2>
+                    <p class="app-desc" data-i18n="appDesc">
                         Pose ton téléphone. La soirée commence. Le jeu du Loup
                         Garou sans cartes entre amis, mené par un maître du jeu
                         audio. Dès 5 joueurs.
@@ -368,6 +447,7 @@
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="Télécharger Night Claw sur l'App Store"
+                            data-i18n-aria="appStoreLabel"
                         >
                             <svg
                                 width="20"
@@ -388,6 +468,7 @@
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="Télécharger Night Claw sur Google Play"
+                            data-i18n-aria="googlePlayLabel"
                         >
                             <svg
                                 width="20"
@@ -411,6 +492,7 @@
             <div class="footer-socials">
                 <a
                     href="https://www.instagram.com/night_claw_loup_garou"
+                    data-i18n-href="instagramUrl"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Instagram"
@@ -457,8 +539,114 @@
             >
             <p class="footer-copy">
                 © 2026 T&amp;L Studio —
-                <a href="/nightclaw/privacy/">Privacy Policy</a>
+                <a href="/nightclaw/privacy/" data-i18n="privacy">Politique de confidentialité</a>
             </p>
         </footer>
+
+        <script>
+            (function () {
+                var SUPPORTED = ["fr", "en", "es"];
+                var FALLBACK = "en";
+                var STORAGE_KEY = "lang";
+
+                var strings = {
+                    fr: {
+                        description:
+                            "T&L Studio — We craft mobile experiences. Studio indépendant de développement d'applications mobiles.",
+                        sectionLabel: "Nos applications",
+                        appName: "Loup Garou : Night Claw",
+                        appDesc:
+                            "Pose ton téléphone. La soirée commence. Le jeu du Loup Garou sans cartes entre amis, mené par un maître du jeu audio. Dès 5 joueurs.",
+                        appStoreLabel: "Télécharger Night Claw sur l'App Store",
+                        googlePlayLabel: "Télécharger Night Claw sur Google Play",
+                        privacy: "Politique de confidentialité",
+                        instagramUrl: "https://www.instagram.com/night_claw_loup_garou",
+                    },
+                    en: {
+                        description:
+                            "T&L Studio — We craft mobile experiences. Independent mobile app development studio.",
+                        sectionLabel: "Our apps",
+                        appName: "Werewolf Game: Night Claw",
+                        appDesc:
+                            "Put your phone down. Let the night begin. The card-free Werewolf party game for friends, led by an audio game master. 5 players and up.",
+                        appStoreLabel: "Download Night Claw on the App Store",
+                        googlePlayLabel: "Get Night Claw on Google Play",
+                        privacy: "Privacy Policy",
+                        instagramUrl: "https://www.instagram.com/night_claw_werewolf",
+                    },
+                    es: {
+                        description:
+                            "T&L Studio — We craft mobile experiences. Estudio independiente de desarrollo de aplicaciones móviles.",
+                        sectionLabel: "Nuestras apps",
+                        appName: "Hombre Lobo: Night Claw",
+                        appDesc:
+                            "Deja el móvil sobre la mesa. Empieza la noche. El juego del Hombre Lobo sin cartas para jugar con amigos, dirigido por un narrador de audio. A partir de 5 jugadores.",
+                        appStoreLabel: "Descargar Night Claw en la App Store",
+                        googlePlayLabel: "Descargar Night Claw en Google Play",
+                        privacy: "Política de privacidad",
+                        instagramUrl: "https://www.instagram.com/night_claw_werewolf",
+                    },
+                };
+
+                function normalize(tag) {
+                    var code = String(tag || "").toLowerCase().split("-")[0];
+                    return SUPPORTED.indexOf(code) !== -1 ? code : null;
+                }
+
+                function storedLang() {
+                    try {
+                        return normalize(localStorage.getItem(STORAGE_KEY));
+                    } catch (e) {
+                        return null;
+                    }
+                }
+
+                function browserLang() {
+                    var langs = navigator.languages || [navigator.language];
+                    for (var i = 0; i < langs.length; i++) {
+                        var code = normalize(langs[i]);
+                        if (code) return code;
+                    }
+                    return null;
+                }
+
+                // ?lang= (shared links) > user's previous choice > browser language > English
+                function detectLang() {
+                    var param = new URLSearchParams(location.search).get("lang");
+                    return normalize(param) || storedLang() || browserLang() || FALLBACK;
+                }
+
+                function apply(lang) {
+                    var t = strings[lang];
+                    document.documentElement.lang = lang;
+                    document.getElementById("meta-description").content = t.description;
+                    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+                        el.textContent = t[el.dataset.i18n];
+                    });
+                    document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+                        el.setAttribute("aria-label", t[el.dataset.i18nAria]);
+                    });
+                    document.querySelectorAll("[data-i18n-href]").forEach(function (el) {
+                        el.href = t[el.dataset.i18nHref];
+                    });
+                    document.querySelectorAll(".lang-switch button").forEach(function (btn) {
+                        btn.setAttribute("aria-pressed", btn.dataset.lang === lang);
+                    });
+                }
+
+                document.querySelectorAll(".lang-switch button").forEach(function (btn) {
+                    btn.addEventListener("click", function () {
+                        var lang = btn.dataset.lang;
+                        try {
+                            localStorage.setItem(STORAGE_KEY, lang);
+                        } catch (e) {}
+                        apply(lang);
+                        if (window.posthog) posthog.capture("language_selected", { language: lang });
+                    });
+                });
+
+                apply(detectLang());
+            })();
+        </script>
     </body>
 </html>
