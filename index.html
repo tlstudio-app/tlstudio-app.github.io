@@ -518,6 +518,7 @@
                 </a>
                 <a
                     href="https://www.tiktok.com/@nightclawgame"
+                    data-i18n-href="tiktokUrl"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="TikTok"
@@ -586,6 +587,7 @@
                         privacy: "Politique de confidentialité",
                         instagramUrl: "https://www.instagram.com/night_claw_loup_garou",
                         youtubeUrl: "https://www.youtube.com/@night_claw_loup_garou",
+                        tiktokUrl: "https://www.tiktok.com/@nightclawgame",
                     },
                     en: {
                         description:
@@ -599,6 +601,7 @@
                         privacy: "Privacy Policy",
                         instagramUrl: "https://www.instagram.com/night_claw_werewolf",
                         youtubeUrl: "https://www.youtube.com/@night_claw_werewolf",
+                        tiktokUrl: "",
                     },
                     es: {
                         description:
@@ -610,8 +613,9 @@
                         appStoreLabel: "Descargar Night Claw en la App Store",
                         googlePlayLabel: "Descargar Night Claw en Google Play",
                         privacy: "Política de privacidad",
-                        instagramUrl: "https://www.instagram.com/night_claw_werewolf",
-                        youtubeUrl: "https://www.youtube.com/@night_claw_werewolf",
+                        instagramUrl: "https://www.instagram.com/night_claw_hombre_lobo",
+                        youtubeUrl: "https://www.youtube.com/@night_claw_hombre_lobo",
+                        tiktokUrl: "",
                     },
                 };
 
@@ -654,7 +658,10 @@
                         el.setAttribute("aria-label", t[el.dataset.i18nAria]);
                     });
                     document.querySelectorAll("[data-i18n-href]").forEach(function (el) {
-                        el.href = t[el.dataset.i18nHref];
+                        // Empty URL = no account in this language: hide the link
+                        var url = t[el.dataset.i18nHref];
+                        if (url) el.href = url;
+                        el.style.display = url ? "" : "none";
                     });
                     document.querySelectorAll(".lang-switch button").forEach(function (btn) {
                         btn.setAttribute("aria-pressed", btn.dataset.lang === lang);
