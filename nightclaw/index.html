@@ -52,15 +52,52 @@
     </script>
 
     <script>
+      // App Store Connect > Analytics > Sources > Campaign links
+      var APPLE_PROVIDER_TOKEN = "128671536";
+      var APP_STORE_URL = "https://apps.apple.com/app/id6760731403";
+      var PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.tlstudio.nightclaw";
+
+      // Reads utm_* from the page URL; legacy youtube-es / youtube-us links carry the language in the source
+      function readUtm(search) {
+        var params = new URLSearchParams(search);
+        var utm = {};
+        ["utm_source", "utm_medium", "utm_campaign", "utm_content"].forEach(function (key) {
+          var value = (params.get(key) || "").trim().toLowerCase();
+          if (value) utm[key.slice(4)] = value;
+        });
+        var legacy = { "youtube-es": "es", "youtube-us": "en" };
+        if (legacy[utm.source]) {
+          if (!utm.campaign) utm.campaign = legacy[utm.source];
+          utm.source = "youtube";
+        }
+        return utm;
+      }
+
+      function appStoreUrl(utm) {
+        var ct = [utm.source, utm.campaign].filter(Boolean).join("-").slice(0, 30); // App Store Connect caps campaign names at 30 chars
+        if (!ct) return APP_STORE_URL;
+        return APP_STORE_URL + "?pt=" + encodeURIComponent(APPLE_PROVIDER_TOKEN) + "&ct=" + encodeURIComponent(ct) + "&mt=8";
+      }
+
+      function playStoreUrl(utm) {
+        var referrer = ["source", "medium", "campaign", "content"]
+          .filter(function (key) { return utm[key]; })
+          .map(function (key) { return "utm_" + key + "=" + encodeURIComponent(utm[key]); })
+          .join("&");
+        if (!referrer) return PLAY_STORE_URL;
+        return PLAY_STORE_URL + "&referrer=" + encodeURIComponent(referrer);
+      }
+
       var redirected = false;
       function redirectNow() {
         if (redirected) return;
         redirected = true;
         var ua = navigator.userAgent;
+        var utm = readUtm(window.location.search);
         if (/iPhone|iPad|iPod/i.test(ua)) {
-          window.location.replace("https://apps.apple.com/app/id6760731403");
+          window.location.replace(appStoreUrl(utm));
         } else if (/Android/i.test(ua)) {
-          window.location.replace("https://play.google.com/store/apps/details?id=com.tlstudio.nightclaw");
+          window.location.replace(playStoreUrl(utm));
         } else {
           window.location.replace("https://tlstudio.app");
         }
